@@ -10,6 +10,8 @@ import UIKit
 
 class RootViewController: UIViewController {
     
+    var snakeButton:UIButton?
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,16 +20,29 @@ class RootViewController: UIViewController {
         self.title = "贪吃蛇";
         self.view.backgroundColor = UIColor.yellowColor()
         
-        let button: UIButton = UIButton(frame: CGRectMake(0, 0, 50, 50))
-        button.backgroundColor = UIColor.redColor()
-        self.view.addSubview(button)
+        self.snakeButton = UIButton(frame: CGRectMake(0, 0, 50, 50))
+        self.snakeButton!.backgroundColor = UIColor.redColor()
+        self.view.addSubview(self.snakeButton!)
         
         self.configureNavigationItem()
+        
+        // 添加手势
+        let swapGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwapGesture:")
+        self.view.addGestureRecognizer(swapGesture)
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    // MARK - GestureRecognizer
+    
+    func handleSwapGesture(gestureRecongizer:UIGestureRecognizer)
+    {
+        print("滑动手势");
+        let originRect = self.snakeButton!.frame;
+        self.snakeButton!.frame = CGRectMake(originRect.origin.x + 10, originRect.origin.y + 10, originRect.size.width, originRect.size.height);
     }
     
     // MARK: - Private
