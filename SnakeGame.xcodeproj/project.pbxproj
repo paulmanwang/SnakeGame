@@ -14,6 +14,7 @@
 		8CE79C041BD50DCD00F9D2C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C031BD50DCD00F9D2C1 /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
 		8CE79C071BD50EC800F9D2C1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8CE79C081BD50EC800F9D2C1 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C061BD50EC800F9D2C1 /* RootViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		8CE79C101BD6688800F9D2C1 /* Snake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C0F1BD6688800F9D2C1 /* Snake.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		8CE79C031BD50DCD00F9D2C1 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		8CE79C061BD50EC800F9D2C1 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		8CE79C0F1BD6688800F9D2C1 /* Snake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snake.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				8CE79C031BD50DCD00F9D2C1 /* LaunchScreen.xib */,
 				8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */,
 				8CE79C061BD50EC800F9D2C1 /* RootViewController.xib */,
+				8CE79C0F1BD6688800F9D2C1 /* Snake.swift */,
 			);
 			path = SnakeGame;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			files = (
 				8CE79C071BD50EC800F9D2C1 /* RootViewController.swift in Sources */,
 				8CE79BD31BD485B400F9D2C1 /* AppDelegate.swift in Sources */,
+				8CE79C101BD6688800F9D2C1 /* Snake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

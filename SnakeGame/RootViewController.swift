@@ -12,6 +12,7 @@ class RootViewController: UIViewController {
     
     var snakeButton: UIButton?
     var timer: NSTimer?
+    var snake: Snake?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -21,9 +22,7 @@ class RootViewController: UIViewController {
         self.title = "贪吃蛇";
         self.view.backgroundColor = UIColor.yellowColor()
         
-        self.snakeButton = UIButton(frame: CGRectMake(0, 0, 30, 30))
-        self.snakeButton!.backgroundColor = UIColor.redColor()
-        self.view.addSubview(self.snakeButton!)
+        self.snake = Snake(parentView: self.view, length: 3, direction: Direction.Right, originPoint: CGPoint(x: 0, y: 0))
         
         self.configureNavigationItem()
         
@@ -37,17 +36,7 @@ class RootViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK - GestureRecognizer
-    
-    func handleSwapGesture(gestureRecongizer:UIGestureRecognizer)
-    {
-        print("滑动手势");
-        let originRect = self.snakeButton!.frame
-        self.snakeButton!.frame = CGRectMake(originRect.origin.x + 10, originRect.origin.y + 10, originRect.size.width, originRect.size.height)
-    }
-    
     // MARK: - Private
-    
     func configureNavigationItem()
     {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "排行", style: UIBarButtonItemStyle.Plain, target: self, action: "onRankButtonClicked:")
@@ -58,7 +47,6 @@ class RootViewController: UIViewController {
     }
     
     // MARK - Button actions
-    
     func onStartGameButtonClicked(sender: UIButton)
     {
         print("开始游戏")
@@ -76,13 +64,9 @@ class RootViewController: UIViewController {
     }
     
     // MARK - NSTimer
-    
     func startTimer()
     {
         if self.timer == nil {
-            //self.timer = NSTimer(timeInterval: 1, target: self, selector: "timeout:", userInfo: nil, repeats:true)
-            // self.timer? = NSTimer(timeInterval: 1, target: self, selector: "timeout:", userInfo: nil, repeats:true) 这句代码timer返回nil
-            //NSRunLoop.currentRunLoop().addTimer(self.timer!, forMode: NSRunLoopCommonModes)
             self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "timeout:", userInfo: nil, repeats: true)
         }
     }
@@ -97,6 +81,16 @@ class RootViewController: UIViewController {
     
     func timeout(timer:NSTimer)
     {
-        print("定时器")
+        self.snake!.move()
+    }
+    
+    // MARK - GestureRecognizer
+    func handleSwapGesture(gestureRecongizer:UIGestureRecognizer)
+    {
+        if self.snake?.direction == Direction.Left {
+            self.snake?.changeDirection(Direction.Right)
+        } else {
+            self.snake?.changeDirection(Direction.Left)
+        }
     }
 }
