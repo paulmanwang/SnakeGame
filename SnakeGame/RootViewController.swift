@@ -22,13 +22,11 @@ class RootViewController: UIViewController {
         self.title = "贪吃蛇";
         self.view.backgroundColor = UIColor.yellowColor()
         
-        self.snake = Snake(parentView: self.view, length: 3, direction: Direction.Right, originPoint: CGPoint(x: 0, y: 0))
+        self.snake = Snake(parentView: self.view, length: 10, direction: Direction.Right, originPoint: CGPoint(x: 0, y: 0))
         
         self.configureNavigationItem()
         
-        // 添加手势
-        let swapGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwapGesture:")
-        self.view.addGestureRecognizer(swapGesture)
+        self.addSwapGestures()
     }
 
     override func didReceiveMemoryWarning()
@@ -37,6 +35,25 @@ class RootViewController: UIViewController {
     }
     
     // MARK: - Private
+    func addSwapGestures()
+    {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: "handleSwapGesture:")
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: "handleSwapGesture:")
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: "handleSwapGesture:")
+        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
+        self.view.addGestureRecognizer(swipeUp)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: "handleSwapGesture:")
+        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
+        self.view.addGestureRecognizer(swipeDown)
+    }
+    
     func configureNavigationItem()
     {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "排行", style: UIBarButtonItemStyle.Plain, target: self, action: "onRankButtonClicked:")
@@ -67,7 +84,7 @@ class RootViewController: UIViewController {
     func startTimer()
     {
         if self.timer == nil {
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "timeout:", userInfo: nil, repeats: true)
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "timeout:", userInfo: nil, repeats: true)
         }
     }
     
@@ -87,10 +104,27 @@ class RootViewController: UIViewController {
     // MARK - GestureRecognizer
     func handleSwapGesture(gestureRecongizer:UIGestureRecognizer)
     {
-        if self.snake?.direction == Direction.Left {
-            self.snake?.changeDirection(Direction.Right)
-        } else {
-            self.snake?.changeDirection(Direction.Left)
+        if let swipeGesture = gestureRecongizer as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+                case UISwipeGestureRecognizerDirection.Left:
+                    print("向左")
+                    self.snake?.changeDirection(Direction.Left)
+                    
+                case UISwipeGestureRecognizerDirection.Right:
+                    print("向右")
+                    self.snake?.changeDirection(Direction.Right)
+                    
+                case UISwipeGestureRecognizerDirection.Up:
+                    print("向上")
+                    self.snake?.changeDirection(Direction.Up)
+                    
+                case UISwipeGestureRecognizerDirection.Down:
+                    print("向下")
+                    self.snake?.changeDirection(Direction.Down)
+                
+                default:
+                    break
+            }
         }
     }
 }

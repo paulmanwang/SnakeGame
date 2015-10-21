@@ -16,10 +16,22 @@ enum Direction
     case Down
 }
 
+class SnakeBlob {
+    var view: UIButton?
+    var direction: Direction?
+    
+    init(view: UIButton, currentDirection: Direction)
+    {
+        self.view = view
+        self.direction = currentDirection
+    }
+}
+
 class Snake: NSObject {
-    var length:Int = 0
-    var snakeBlobs:NSMutableArray
-    var direction:Direction = Direction.Right
+    var length: Int = 0
+    var snakeBlobs: NSMutableArray
+    var direction: Direction = Direction.Right
+    let SnakeBlobWidth: CGFloat = 20.0
     
     // MARK - Init
     init(parentView:UIView, length: Int, direction:Direction, originPoint:CGPoint)
@@ -27,10 +39,12 @@ class Snake: NSObject {
         self.snakeBlobs = NSMutableArray()
         self.length = length
         for var index = 0; index < length; ++index {
-            let snakeBlob = UIButton(frame: CGRectMake(CGFloat(30 * index), 0, 30, 30))
-            snakeBlob.backgroundColor = UIColor.redColor()
-            snakeBlob.layer.borderWidth = 1
-            parentView.addSubview(snakeBlob)
+            let snakeButton = UIButton(frame: CGRectMake(SnakeBlobWidth * CGFloat(index), 0, SnakeBlobWidth, SnakeBlobWidth))
+            snakeButton.backgroundColor = UIColor.redColor()
+            snakeButton.layer.borderWidth = 1
+            snakeButton.userInteractionEnabled = false
+            let snakeBlob = SnakeBlob(view: snakeButton, currentDirection: Direction.Right)
+            parentView.addSubview(snakeBlob.view!)
             
             self.snakeBlobs.addObject(snakeBlob)
         }
@@ -51,52 +65,30 @@ class Snake: NSObject {
     // MARK - Move
     func move()
     {
-        switch direction
-        {
-        case .Left:
-            self.moveLeft()
-        case .Right:
-            self.moveRight()
-        case .Up:
-            self.moveUp()
-        case .Down:
-            self.moveDown()
+        // 方法3
+        for var i = 0; i < self.snakeBlobs.count - 1; i++ {
+            let snakeBlob = self.snakeBlobs[i] as? SnakeBlob
+            let preSnakeBlob = self.snakeBlobs[i + 1] as? SnakeBlob
+            
+            let view1: UIButton = (snakeBlob?.view)!
+            let view2: UIButton = (preSnakeBlob?.view)!
+            
+            view1.frame = view2.frame;
         }
-    }
-    
-    func moveRight()
-    {
-        for var index: Int = 0; index < self.length; ++index {
-            let snakeBlob = self.snakeBlobs[index] as? UIButton
-            let originRect = snakeBlob?.frame
-            snakeBlob?.frame = CGRectMake((originRect?.origin.x)! + 30.0, (originRect?.origin.y)!, (originRect?.size.width)!, (originRect?.size.height)!)
-        }
-    }
-    
-    func moveLeft()
-    {
-        for var index: Int = 0; index < self.length; ++index {
-            let snakeBlob = self.snakeBlobs[index] as? UIButton
-            let originRect = snakeBlob?.frame
-            snakeBlob?.frame = CGRectMake((originRect?.origin.x)! - 30.0, (originRect?.origin.y)!, (originRect?.size.width)!, (originRect?.size.height)!)
-        }
-    }
-    
-    func moveUp()
-    {
-        for var index: Int = 0; index < self.length; ++index {
-            let snakeBlob = self.snakeBlobs[index] as? UIButton
-            let originRect = snakeBlob?.frame
-            snakeBlob?.frame = CGRectMake((originRect?.origin.x)! + 30.0, (originRect?.origin.y)!, (originRect?.size.width)!, (originRect?.size.height)!)
-        }
-    }
-    
-    func moveDown()
-    {
-        for var index: Int = 0; index < self.length; ++index {
-            let snakeBlob = self.snakeBlobs[index] as? UIButton
-            let originRect = snakeBlob?.frame
-            snakeBlob?.frame = CGRectMake((originRect?.origin.x)! + 30.0, (originRect?.origin.y)!, (originRect?.size.width)!, (originRect?.size.height)!)
+        
+        // 移动蛇头
+        let snakeBlob = self.snakeBlobs.lastObject as? SnakeBlob
+        let view: UIButton = (snakeBlob?.view)!
+        let originRect = view.frame
+        switch self.direction {
+            case .Left:
+                view.frame = CGRectMake(originRect.origin.x - SnakeBlobWidth, originRect.origin.y, originRect.size.width, originRect.size.height)
+            case .Right:
+                view.frame = CGRectMake(originRect.origin.x + SnakeBlobWidth, originRect.origin.y, originRect.size.width, originRect.size.height)
+            case .Up:
+                view.frame = CGRectMake(originRect.origin.x, originRect.origin.y - SnakeBlobWidth, originRect.size.width, originRect.size.height)
+            case .Down:
+                view.frame = CGRectMake(originRect.origin.x , originRect.origin.y + SnakeBlobWidth, originRect.size.width, originRect.size.height)
         }
     }
 }
