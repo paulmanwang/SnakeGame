@@ -50,7 +50,20 @@ class Snake: NSObject {
         }
     }
     
-    // MARK - eat
+    // MARK - Private APIs
+    func isOppositeDirection(direction1:Direction, direction2:Direction) -> Bool {
+        if (direction1 == Direction.Left && direction2 == Direction.Right)
+            || (direction1 == Direction.Right && direction2 == Direction.Left)
+            || (direction1 == Direction.Up && direction2 == Direction.Down)
+            || (direction1 == Direction.Down && direction2 == Direction.Up)
+        {
+            return true
+        }
+        
+        return false
+    }
+    
+    // MARK - Eat
     func eat()
     {
         self.length++;
@@ -59,6 +72,10 @@ class Snake: NSObject {
     // MARK - Direction
     func changeDirection(newDirection: Direction)
     {
+        if self.isOppositeDirection(self.direction, direction2: newDirection) { // 不能设置为相反方向
+            return;
+        }
+        
         self.direction = newDirection
     }
     
