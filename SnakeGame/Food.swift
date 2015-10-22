@@ -8,6 +8,17 @@
 
 import UIKit
 
-class Food: NSObject {
+enum FoodCategory
+{
+    case Humburg
+    case Fruit
+}
 
+class Food: NSObject {
+    var position: CGPoint?
+    
+    init(position: CGPoint)
+    {
+        self.position = position
+    }
 }

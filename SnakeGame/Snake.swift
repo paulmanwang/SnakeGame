@@ -33,7 +33,7 @@ class Snake: NSObject {
     var direction: Direction = Direction.Right
     let SnakeBlobWidth: CGFloat = 20.0
     
-    // MARK - Init
+    // MARK: - Init
     init(parentView:UIView, length: Int, direction:Direction, originPoint:CGPoint)
     {
         self.snakeBlobs = NSMutableArray()
@@ -50,7 +50,7 @@ class Snake: NSObject {
         }
     }
     
-    // MARK - Private APIs
+    // MARK: - Private APIs
     func isOppositeDirection(direction1:Direction, direction2:Direction) -> Bool {
         if (direction1 == Direction.Left && direction2 == Direction.Right)
             || (direction1 == Direction.Right && direction2 == Direction.Left)
@@ -63,13 +63,13 @@ class Snake: NSObject {
         return false
     }
     
-    // MARK - Eat
+    // MARK: - Eat
     func eat()
     {
         self.length++;
     }
     
-    // MARK - Direction
+    // MARK: - Direction
     func changeDirection(newDirection: Direction)
     {
         if self.isOppositeDirection(self.direction, direction2: newDirection) { // 不能设置为相反方向
@@ -79,10 +79,10 @@ class Snake: NSObject {
         self.direction = newDirection
     }
     
-    // MARK - Move
+    // MARK: - Move
     func move()
     {
-        // 方法3
+        // 移动蛇身
         for var i = 0; i < self.snakeBlobs.count - 1; i++ {
             let snakeBlob = self.snakeBlobs[i] as? SnakeBlob
             let preSnakeBlob = self.snakeBlobs[i + 1] as? SnakeBlob

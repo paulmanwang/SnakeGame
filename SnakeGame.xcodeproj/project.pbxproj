@@ -13,8 +13,9 @@
 		8CE79BF31BD485B500F9D2C1 /* SnakeGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79BF21BD485B500F9D2C1 /* SnakeGameUITests.swift */; };
 		8CE79C041BD50DCD00F9D2C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C031BD50DCD00F9D2C1 /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
 		8CE79C071BD50EC800F9D2C1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		8CE79C081BD50EC800F9D2C1 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C061BD50EC800F9D2C1 /* RootViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		8CE79C101BD6688800F9D2C1 /* Snake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C0F1BD6688800F9D2C1 /* Snake.swift */; settings = {ASSET_TAGS = (); }; };
+		8CE79C1A1BD878A000F9D2C1 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C191BD878A000F9D2C1 /* Food.swift */; settings = {ASSET_TAGS = (); }; };
+		8CE79C1C1BD87BC600F9D2C1 /* MainBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C1B1BD87BC600F9D2C1 /* MainBoard.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +48,9 @@
 		8CE79BF41BD485B500F9D2C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CE79C031BD50DCD00F9D2C1 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		8CE79C061BD50EC800F9D2C1 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		8CE79C0F1BD6688800F9D2C1 /* Snake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snake.swift; sourceTree = "<group>"; };
+		8CE79C191BD878A000F9D2C1 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		8CE79C1B1BD87BC600F9D2C1 /* MainBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +101,12 @@
 		8CE79BD11BD485B400F9D2C1 /* SnakeGame */ = {
 			isa = PBXGroup;
 			children = (
-				8CE79BD21BD485B400F9D2C1 /* AppDelegate.swift */,
-				8CE79BD91BD485B400F9D2C1 /* Assets.xcassets */,
-				8CE79BDE1BD485B400F9D2C1 /* Info.plist */,
-				8CE79C031BD50DCD00F9D2C1 /* LaunchScreen.xib */,
+				8CE79C181BD8781700F9D2C1 /* AppGlobal */,
+				8CE79C111BD8779200F9D2C1 /* Resource */,
 				8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */,
-				8CE79C061BD50EC800F9D2C1 /* RootViewController.xib */,
 				8CE79C0F1BD6688800F9D2C1 /* Snake.swift */,
+				8CE79C191BD878A000F9D2C1 /* Food.swift */,
+				8CE79C1B1BD87BC600F9D2C1 /* MainBoard.swift */,
 			);
 			path = SnakeGame;
 			sourceTree = "<group>";
@@ -126,6 +127,24 @@
 				8CE79BF41BD485B500F9D2C1 /* Info.plist */,
 			);
 			path = SnakeGameUITests;
+			sourceTree = "<group>";
+		};
+		8CE79C111BD8779200F9D2C1 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				8CE79BD91BD485B400F9D2C1 /* Assets.xcassets */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		8CE79C181BD8781700F9D2C1 /* AppGlobal */ = {
+			isa = PBXGroup;
+			children = (
+				8CE79BDE1BD485B400F9D2C1 /* Info.plist */,
+				8CE79BD21BD485B400F9D2C1 /* AppDelegate.swift */,
+				8CE79C031BD50DCD00F9D2C1 /* LaunchScreen.xib */,
+			);
+			name = AppGlobal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +252,6 @@
 			files = (
 				8CE79BDA1BD485B400F9D2C1 /* Assets.xcassets in Resources */,
 				8CE79C041BD50DCD00F9D2C1 /* LaunchScreen.xib in Resources */,
-				8CE79C081BD50EC800F9D2C1 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +276,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CE79C1C1BD87BC600F9D2C1 /* MainBoard.swift in Sources */,
 				8CE79C071BD50EC800F9D2C1 /* RootViewController.swift in Sources */,
+				8CE79C1A1BD878A000F9D2C1 /* Food.swift in Sources */,
 				8CE79BD31BD485B400F9D2C1 /* AppDelegate.swift in Sources */,
 				8CE79C101BD6688800F9D2C1 /* Snake.swift in Sources */,
 			);
