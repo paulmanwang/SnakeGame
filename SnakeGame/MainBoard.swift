@@ -11,11 +11,14 @@ import UIKit
 class MainBoard: NSObject {
     var width: CGFloat = 0
     var height: CGFloat = 0
+    let snakeBlobWidth: CGFloat = 20
+    
     var gameBoard: UIView?
     var snake: Snake?
     var timer: NSTimer?
-    let snakeBlobWidth: CGFloat = 20
     var food: Food?
+    
+    var score: Int = 0
     
     // MARK: - Init
     
@@ -28,6 +31,24 @@ class MainBoard: NSObject {
         self.snake = Snake(parentView: self.gameBoard!, blobWidth:snakeBlobWidth, length: 5, defaultDirection: Direction.Right, originPoint: CGPointMake(0, 0))
     }
     
+    // MARK: - Private APIs
+    
+    func isGameOver(position: CGPoint) -> Bool
+    {
+        let maxX: CGFloat = CGFloat(Int(self.width / self.snakeBlobWidth)) * CGFloat(20)
+        let maxY: CGFloat = CGFloat(Int(self.height / self.snakeBlobWidth) - 1) * CGFloat(20)
+        print("srceen height = \(maxY)")
+        let x: CGFloat = position.x
+        let y: CGFloat = position.y
+        
+        print("y = \(y)")
+        if x < 0 || x > maxX || y < 0 || y > maxY {
+            return true
+        }
+        
+        return false
+    }
+    
     // MARK: - Public APIs
     
     func randomInRange(range: Range<Int>) -> Int {
@@ -37,17 +58,31 @@ class MainBoard: NSObject {
     
     func makeFood()
     {
-        //self.food = nil
-        
-        let maxX: Int = Int(self.width / self.snakeBlobWidth)
-        let maxY: Int = Int(self.height / self.snakeBlobWidth)
-        
-        // 生成随机数
-        let randomX = Int(arc4random()) % maxX
-        let randomY = Int(arc4random()) % maxY
-        
-        let position: CGPoint = CGPointMake(CGFloat(randomX) * 20, CGFloat(randomY) * 20)
-        self.food = Food(parentView: self.gameBoard!, position: position)
+        if food?.superview == nil {
+            let maxX: Int = Int(self.width / self.snakeBlobWidth)
+            let maxY: Int = Int(self.height / self.snakeBlobWidth)
+            
+            // 生成随机数
+            let randomX = Int(arc4random()) % maxX
+            let randomY = Int(arc4random()) % maxY
+            
+            let position: CGPoint = CGPointMake(CGFloat(randomX) * 20, CGFloat(randomY) * 20)
+            
+            // 食物不能落在蛇的身上
+            var valide = true
+            for var i = 0; i < self.snake?.snakeBlobs.count; i++ {
+                let snakeBlob = self.snake?.snakeBlobs[i] as? UIButton
+                if snakeBlob?.frame.origin == position {
+                    valide = false
+                }
+            }
+            
+            if valide {
+                self.food = Food(parentView: self.gameBoard!, position: position)
+            } else {
+                self.makeFood()
+            }
+        }
     }
     
     func startGame()
@@ -55,6 +90,13 @@ class MainBoard: NSObject {
         self.makeFood()
         self.addSwapGestures()
         self.startTimer()
+    }
+    
+    func restartGame()
+    {
+        self.startTimer()
+        self.snake?.resetSnake()
+        self.food?.removeFromSuperview()
     }
     
     // MARK: - GestureRecognizer
@@ -109,7 +151,7 @@ class MainBoard: NSObject {
     func startTimer()
     {
         if self.timer == nil {
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "timeout:", userInfo: nil, repeats: true)
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "timeout:", userInfo: nil, repeats: true)
         }
     }
     
@@ -123,9 +165,50 @@ class MainBoard: NSObject {
     
     func timeout(timer:NSTimer)
     {
-        let ret: Bool = self.snake!.moveWithFood(self.food!)
-        if ret {
-            self.makeFood()
+        let (isGameOver, currentPosition) = self.snake!.moveWithFood(self.food!)
+        if isGameOver {
+            stopTimer()
+            let score: Int = (self.snake?.length())! - 5
+            print("玩家得分 = \(score)")
+            self.showAlertView()
+        } else {
+            let gameOver: Bool = self.isGameOver(currentPosition)
+            if gameOver {
+                stopTimer()
+                let score: Int = (self.snake?.length())! - 5
+                print("玩家得分 = \(score)")
+                self.showAlertView()
+            } else {
+                self.makeFood()
+            }
+        }
+    }
+    
+    // MARK: - AlertView
+    
+    func showAlertView()
+    {
+        let alert: UIAlertView = UIAlertView()
+        alert.delegate = self
+        alert.title = "游戏结束"
+        alert.message = "再试一次？"
+        alert.addButtonWithTitle("取消")
+        alert.addButtonWithTitle("确定")
+        alert.show()
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
+    {
+        switch buttonIndex {
+        case 0:
+            print("游戏结束")
+            
+        case 1:
+            print("确定")
+            self.restartGame()
+            
+        default:
+            break
         }
     }
 }

@@ -22,7 +22,7 @@ class RootViewController: UIViewController {
         self.configureNavigationItem()
         
         let width: CGFloat = UIScreen.mainScreen().bounds.width
-        let height: CGFloat = UIScreen.mainScreen().bounds.height
+        let height: CGFloat = UIScreen.mainScreen().bounds.height - 66
         self.mainBoard = MainBoard(parent: self.view, width: width, height: height)
     }
 

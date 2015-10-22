@@ -16,17 +16,7 @@ enum Direction
     case Down
 }
 
-class SnakeBlob {
-    var view: UIButton?
-    
-    init(view: UIButton)
-    {
-        self.view = view
-    }
-}
-
 class Snake: NSObject {
-    var length: Int = 0
     var snakeBlobs: NSMutableArray
     var direction: Direction = Direction.Right
     let SnakeBlobWidth: CGFloat = 20.0
@@ -36,15 +26,14 @@ class Snake: NSObject {
     init(parentView:UIView, blobWidth: CGFloat, length: Int, defaultDirection:Direction, originPoint:CGPoint)
     {
         self.snakeBlobs = NSMutableArray()
-        self.length = length
         self.parentView = parentView
         for var index = 0; index < length; ++index {
-            let snakeButton = UIButton(frame: CGRectMake(SnakeBlobWidth * CGFloat(index), 0, SnakeBlobWidth, SnakeBlobWidth))
-            snakeButton.backgroundColor = UIColor.redColor()
-            snakeButton.layer.borderWidth = 1
-            snakeButton.userInteractionEnabled = false
-            let snakeBlob = SnakeBlob(view: snakeButton)
-            parentView.addSubview(snakeBlob.view!)
+            let frame:CGRect = CGRectMake(SnakeBlobWidth * CGFloat(index), 0, SnakeBlobWidth, SnakeBlobWidth)
+            let snakeBlob = UIButton(frame: frame)
+            snakeBlob.backgroundColor = UIColor.redColor()
+            snakeBlob.layer.borderWidth = 1
+            snakeBlob.userInteractionEnabled = false
+            parentView.addSubview(snakeBlob)
             
             self.snakeBlobs.addObject(snakeBlob)
         }
@@ -63,13 +52,28 @@ class Snake: NSObject {
         return false
     }
     
-    // MARK: - Eat
-    func eat()
+    // MARK: Public APIs
+    func resetSnake()
     {
-        self.length++;
+        for snakeBlob in self.snakeBlobs {
+            snakeBlob.removeFromSuperview()
+        }
+        self.snakeBlobs.removeAllObjects()
+        
+        self.direction = Direction.Right
+        
+        for var index = 0; index < 5; ++index {
+            let frame:CGRect = CGRectMake(SnakeBlobWidth * CGFloat(index), 0, SnakeBlobWidth, SnakeBlobWidth)
+            let snakeBlob = UIButton(frame: frame)
+            snakeBlob.backgroundColor = UIColor.redColor()
+            snakeBlob.layer.borderWidth = 1
+            snakeBlob.userInteractionEnabled = false
+            self.parentView!.addSubview(snakeBlob)
+            
+            self.snakeBlobs.addObject(snakeBlob)
+        }
     }
     
-    // MARK: - Direction
     func changeDirection(newDirection: Direction)
     {
         if self.isOppositeDirection(self.direction, direction2: newDirection) { // 不能设置为相反方向
@@ -79,57 +83,60 @@ class Snake: NSObject {
         self.direction = newDirection
     }
     
-    // MARK: - Move
-    func moveWithFood(food:Food) -> Bool
+    // 返回元组
+    func moveWithFood(food:Food) -> (Bool, CGPoint)
     {
-        var ret: Bool = false
-        
         // 记录蛇尾的位置
-        let tailSnakeBlob = self.snakeBlobs.firstObject as? SnakeBlob
-        let tailRect: CGRect = (tailSnakeBlob?.view?.frame)!
+        let tailSnakeBlob = self.snakeBlobs.firstObject as? UIButton
+        let tailRect: CGRect = (tailSnakeBlob?.frame)!
         
         // 移动蛇身
         for var i = 0; i < self.snakeBlobs.count - 1; i++ {
-            let snakeBlob = self.snakeBlobs[i] as? SnakeBlob
-            let preSnakeBlob = self.snakeBlobs[i + 1] as? SnakeBlob
+            let snakeBlob = self.snakeBlobs[i] as? UIButton
+            let preSnakeBlob = self.snakeBlobs[i + 1] as? UIButton
             
-            let view1: UIButton = (snakeBlob?.view)!
-            let view2: UIButton = (preSnakeBlob?.view)!
-            
-            view1.frame = view2.frame;
+            snakeBlob?.frame = (preSnakeBlob?.frame)!
         }
         
-        // 移动蛇头，可以穿墙
-        let snakeBlob = self.snakeBlobs.lastObject as? SnakeBlob
-        let view: UIButton = (snakeBlob?.view)!
-        let originRect = view.frame
+        // 移动蛇头
+        let headSnakeBlob = self.snakeBlobs.lastObject as? UIButton
+        let originRect: CGRect = headSnakeBlob!.frame
         switch self.direction {
             case .Left:
-                view.frame = CGRectMake(originRect.origin.x - SnakeBlobWidth, originRect.origin.y, originRect.size.width, originRect.size.height)
+                headSnakeBlob!.frame = CGRectMake(originRect.origin.x - SnakeBlobWidth, originRect.origin.y, originRect.size.width, originRect.size.height)
             case .Right:
-                view.frame = CGRectMake(originRect.origin.x + SnakeBlobWidth, originRect.origin.y, originRect.size.width, originRect.size.height)
+                headSnakeBlob!.frame = CGRectMake(originRect.origin.x + SnakeBlobWidth, originRect.origin.y, originRect.size.width, originRect.size.height)
             case .Up:
-                view.frame = CGRectMake(originRect.origin.x, originRect.origin.y - SnakeBlobWidth, originRect.size.width, originRect.size.height)
+                headSnakeBlob!.frame = CGRectMake(originRect.origin.x, originRect.origin.y - SnakeBlobWidth, originRect.size.width, originRect.size.height)
             case .Down:
-                view.frame = CGRectMake(originRect.origin.x , originRect.origin.y + SnakeBlobWidth, originRect.size.width, originRect.size.height)
+                headSnakeBlob!.frame = CGRectMake(originRect.origin.x , originRect.origin.y + SnakeBlobWidth, originRect.size.width, originRect.size.height)
         }
         
-        // 蛇头位置与食物重合时，说明吃食成功。吃到食物时，蛇尾增加长度1
-        if view.frame.origin == food.view?.frame.origin {
-            ret = true
-            food.view?.removeFromSuperview()
+        // 蛇头位置与食物重合时，说明吃食成功。吃到食物后，蛇尾增加长度1
+        if headSnakeBlob!.frame.origin == food.frame.origin {
+            food.removeFromSuperview()
             
-            let snakeButton = UIButton(frame: tailRect)
-            snakeButton.backgroundColor = UIColor.redColor()
-            snakeButton.layer.borderWidth = 1
-            snakeButton.userInteractionEnabled = false
-            let snakeBlob = SnakeBlob(view: snakeButton)
-            self.parentView!.addSubview(snakeBlob.view!)
-            
+            let snakeBlob = UIButton(frame: tailRect)
+            snakeBlob.backgroundColor = UIColor.redColor()
+            snakeBlob.layer.borderWidth = 1
+            snakeBlob.userInteractionEnabled = false
+            self.parentView!.addSubview(snakeBlob)
             self.snakeBlobs.insertObject(snakeBlob, atIndex: 0)
         }
         
-        return ret
+        // 如果蛇迟到了自己，则游戏结束
+        var isGameOver = false
+        for var i = 0; i < self.snakeBlobs.count - 1; i++ {
+            let snakeBlob = self.snakeBlobs[i] as? UIButton
+            if headSnakeBlob?.frame.origin == snakeBlob?.frame.origin {
+                isGameOver = true
+            }
+        }
+        
+        return (isGameOver, headSnakeBlob!.frame.origin)
     }
     
+    func length() -> Int {
+        return self.snakeBlobs.count
+    }
 }

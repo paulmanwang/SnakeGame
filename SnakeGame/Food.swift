@@ -8,21 +8,17 @@
 
 import UIKit
 
-enum FoodCategory
-{
-    case Humburg
-    case Fruit
-}
-
-class Food: NSObject {
-    
-    var view: UIView?
+class Food: UIView {
     
     init(parentView:UIView, position: CGPoint)
     {
-        let button: UIButton = UIButton(frame: CGRectMake(position.x, position.y, 20.0, 20.0))
-        button.backgroundColor = UIColor.greenColor()
-        self.view = button;
-        parentView.addSubview(self.view!)
+        let frame: CGRect = CGRectMake(position.x, position.y, 20.0, 20.0)
+        super.init(frame: frame)
+        self.backgroundColor = UIColor.greenColor()
+        parentView.addSubview(self)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
