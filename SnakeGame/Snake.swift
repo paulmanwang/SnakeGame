@@ -18,12 +18,10 @@ enum Direction
 
 class SnakeBlob {
     var view: UIButton?
-    var direction: Direction?
     
-    init(view: UIButton, currentDirection: Direction)
+    init(view: UIButton)
     {
         self.view = view
-        self.direction = currentDirection
     }
 }
 
@@ -32,18 +30,20 @@ class Snake: NSObject {
     var snakeBlobs: NSMutableArray
     var direction: Direction = Direction.Right
     let SnakeBlobWidth: CGFloat = 20.0
+    var parentView: UIView?
     
     // MARK: - Init
-    init(parentView:UIView, length: Int, direction:Direction, originPoint:CGPoint)
+    init(parentView:UIView, blobWidth: CGFloat, length: Int, defaultDirection:Direction, originPoint:CGPoint)
     {
         self.snakeBlobs = NSMutableArray()
         self.length = length
+        self.parentView = parentView
         for var index = 0; index < length; ++index {
             let snakeButton = UIButton(frame: CGRectMake(SnakeBlobWidth * CGFloat(index), 0, SnakeBlobWidth, SnakeBlobWidth))
             snakeButton.backgroundColor = UIColor.redColor()
             snakeButton.layer.borderWidth = 1
             snakeButton.userInteractionEnabled = false
-            let snakeBlob = SnakeBlob(view: snakeButton, currentDirection: Direction.Right)
+            let snakeBlob = SnakeBlob(view: snakeButton)
             parentView.addSubview(snakeBlob.view!)
             
             self.snakeBlobs.addObject(snakeBlob)
@@ -80,8 +80,14 @@ class Snake: NSObject {
     }
     
     // MARK: - Move
-    func move()
+    func moveWithFood(food:Food) -> Bool
     {
+        var ret: Bool = false
+        
+        // 记录蛇尾的位置
+        let tailSnakeBlob = self.snakeBlobs.firstObject as? SnakeBlob
+        let tailRect: CGRect = (tailSnakeBlob?.view?.frame)!
+        
         // 移动蛇身
         for var i = 0; i < self.snakeBlobs.count - 1; i++ {
             let snakeBlob = self.snakeBlobs[i] as? SnakeBlob
@@ -93,7 +99,7 @@ class Snake: NSObject {
             view1.frame = view2.frame;
         }
         
-        // 移动蛇头
+        // 移动蛇头，可以穿墙
         let snakeBlob = self.snakeBlobs.lastObject as? SnakeBlob
         let view: UIButton = (snakeBlob?.view)!
         let originRect = view.frame
@@ -107,5 +113,23 @@ class Snake: NSObject {
             case .Down:
                 view.frame = CGRectMake(originRect.origin.x , originRect.origin.y + SnakeBlobWidth, originRect.size.width, originRect.size.height)
         }
+        
+        // 蛇头位置与食物重合时，说明吃食成功。吃到食物时，蛇尾增加长度1
+        if view.frame.origin == food.view?.frame.origin {
+            ret = true
+            food.view?.removeFromSuperview()
+            
+            let snakeButton = UIButton(frame: tailRect)
+            snakeButton.backgroundColor = UIColor.redColor()
+            snakeButton.layer.borderWidth = 1
+            snakeButton.userInteractionEnabled = false
+            let snakeBlob = SnakeBlob(view: snakeButton)
+            self.parentView!.addSubview(snakeBlob.view!)
+            
+            self.snakeBlobs.insertObject(snakeBlob, atIndex: 0)
+        }
+        
+        return ret
     }
+    
 }

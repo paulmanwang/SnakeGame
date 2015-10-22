@@ -14,6 +14,8 @@ class MainBoard: NSObject {
     var gameBoard: UIView?
     var snake: Snake?
     var timer: NSTimer?
+    let snakeBlobWidth: CGFloat = 20
+    var food: Food?
     
     // MARK: - Init
     
@@ -23,13 +25,34 @@ class MainBoard: NSObject {
         self.height = height
         
         self.gameBoard = parent
-        self.snake = Snake(parentView: self.gameBoard!, length: 5, direction: Direction.Right, originPoint: CGPointMake(0, 0))
+        self.snake = Snake(parentView: self.gameBoard!, blobWidth:snakeBlobWidth, length: 5, defaultDirection: Direction.Right, originPoint: CGPointMake(0, 0))
     }
     
     // MARK: - Public APIs
     
+    func randomInRange(range: Range<Int>) -> Int {
+        let count = UInt32(range.endIndex - range.startIndex)
+        return  Int(arc4random_uniform(count)) + range.startIndex
+    }
+    
+    func makeFood()
+    {
+        //self.food = nil
+        
+        let maxX: Int = Int(self.width / self.snakeBlobWidth)
+        let maxY: Int = Int(self.height / self.snakeBlobWidth)
+        
+        // 生成随机数
+        let randomX = Int(arc4random()) % maxX
+        let randomY = Int(arc4random()) % maxY
+        
+        let position: CGPoint = CGPointMake(CGFloat(randomX) * 20, CGFloat(randomY) * 20)
+        self.food = Food(parentView: self.gameBoard!, position: position)
+    }
+    
     func startGame()
     {
+        self.makeFood()
         self.addSwapGestures()
         self.startTimer()
     }
@@ -100,6 +123,9 @@ class MainBoard: NSObject {
     
     func timeout(timer:NSTimer)
     {
-        self.snake!.move()
+        let ret: Bool = self.snake!.moveWithFood(self.food!)
+        if ret {
+            self.makeFood()
+        }
     }
 }

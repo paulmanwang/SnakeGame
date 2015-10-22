@@ -15,10 +15,14 @@ enum FoodCategory
 }
 
 class Food: NSObject {
-    var position: CGPoint?
     
-    init(position: CGPoint)
+    var view: UIView?
+    
+    init(parentView:UIView, position: CGPoint)
     {
-        self.position = position
+        let button: UIButton = UIButton(frame: CGRectMake(position.x, position.y, 20.0, 20.0))
+        button.backgroundColor = UIColor.greenColor()
+        self.view = button;
+        parentView.addSubview(self.view!)
     }
 }
