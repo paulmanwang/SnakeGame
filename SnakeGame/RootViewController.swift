@@ -17,7 +17,7 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
         
         self.edgesForExtendedLayout = UIRectEdge.None
-        self.title = "贪吃蛇";
+        self.title = "简易贪吃蛇";
         self.view.backgroundColor = UIColor.yellowColor()
         self.configureNavigationItem()
         
@@ -25,10 +25,19 @@ class RootViewController: UIViewController {
         let height: CGFloat = UIScreen.mainScreen().bounds.height - 66
         self.mainBoard = MainBoard(parent: self.view, width: width, height: height)
     }
+    
+    override func viewWillDisappear(animated: Bool)
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return self.mainBoard?.isGamePlaying == false
     }
 
     // MARK: - Private
@@ -46,8 +55,13 @@ class RootViewController: UIViewController {
     
     func onStartGameButtonClicked(sender: UIButton)
     {
-        print("开始游戏")
-        self.mainBoard?.startGame()
+        if self.mainBoard?.isGamePlaying == false {
+            print("开始游戏")
+            let width: CGFloat = UIScreen.mainScreen().bounds.width
+            let height: CGFloat = UIScreen.mainScreen().bounds.height - 66
+            self.mainBoard?.setSize(width: width, height: height)
+            self.mainBoard?.startGame()
+        }
     }
     
     func onRankButtonClicked(sender: UIButton)

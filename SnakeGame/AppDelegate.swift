@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.backgroundColor = UIColor.whiteColor()
         
         let root = RootViewController()
-        let navCtrl = UINavigationController(rootViewController:root)
+        let navCtrl = SGNavigationController(rootViewController:root)
         self.window!.rootViewController = navCtrl
         self.window!.makeKeyAndVisible()
         
