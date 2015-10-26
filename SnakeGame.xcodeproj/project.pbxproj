@@ -17,6 +17,10 @@
 		8CE79C1A1BD878A000F9D2C1 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C191BD878A000F9D2C1 /* Food.swift */; settings = {ASSET_TAGS = (); }; };
 		8CE79C1C1BD87BC600F9D2C1 /* MainBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C1B1BD87BC600F9D2C1 /* MainBoard.swift */; settings = {ASSET_TAGS = (); }; };
 		8CE79C201BD9E27F00F9D2C1 /* SGNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C1F1BD9E27F00F9D2C1 /* SGNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
+		8CE79C341BDA27E600F9D2C1 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C321BDA27E600F9D2C1 /* RankViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		8CE79C351BDA27E600F9D2C1 /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C331BDA27E600F9D2C1 /* RankViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		8CE79C381BDA305F00F9D2C1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C361BDA305F00F9D2C1 /* SettingViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		8CE79C391BDA305F00F9D2C1 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C371BDA305F00F9D2C1 /* SettingViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		8CE79C191BD878A000F9D2C1 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		8CE79C1B1BD87BC600F9D2C1 /* MainBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainBoard.swift; sourceTree = "<group>"; };
 		8CE79C1F1BD9E27F00F9D2C1 /* SGNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGNavigationController.swift; sourceTree = "<group>"; };
+		8CE79C321BDA27E600F9D2C1 /* RankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
+		8CE79C331BDA27E600F9D2C1 /* RankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankViewController.xib; sourceTree = "<group>"; };
+		8CE79C361BDA305F00F9D2C1 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		8CE79C371BDA305F00F9D2C1 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,12 +111,12 @@
 		8CE79BD11BD485B400F9D2C1 /* SnakeGame */ = {
 			isa = PBXGroup;
 			children = (
+				8CE79C311BDA27C200F9D2C1 /* Setting */,
+				8CE79C301BDA27B800F9D2C1 /* Rank */,
+				8CE79C2F1BDA27A900F9D2C1 /* GameLogic */,
 				8CE79C181BD8781700F9D2C1 /* AppGlobal */,
 				8CE79C111BD8779200F9D2C1 /* Resource */,
 				8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */,
-				8CE79C0F1BD6688800F9D2C1 /* Snake.swift */,
-				8CE79C191BD878A000F9D2C1 /* Food.swift */,
-				8CE79C1B1BD87BC600F9D2C1 /* MainBoard.swift */,
 				8CE79C1F1BD9E27F00F9D2C1 /* SGNavigationController.swift */,
 			);
 			path = SnakeGame;
@@ -148,6 +156,34 @@
 				8CE79C031BD50DCD00F9D2C1 /* LaunchScreen.xib */,
 			);
 			name = AppGlobal;
+			sourceTree = "<group>";
+		};
+		8CE79C2F1BDA27A900F9D2C1 /* GameLogic */ = {
+			isa = PBXGroup;
+			children = (
+				8CE79C0F1BD6688800F9D2C1 /* Snake.swift */,
+				8CE79C191BD878A000F9D2C1 /* Food.swift */,
+				8CE79C1B1BD87BC600F9D2C1 /* MainBoard.swift */,
+			);
+			name = GameLogic;
+			sourceTree = "<group>";
+		};
+		8CE79C301BDA27B800F9D2C1 /* Rank */ = {
+			isa = PBXGroup;
+			children = (
+				8CE79C321BDA27E600F9D2C1 /* RankViewController.swift */,
+				8CE79C331BDA27E600F9D2C1 /* RankViewController.xib */,
+			);
+			name = Rank;
+			sourceTree = "<group>";
+		};
+		8CE79C311BDA27C200F9D2C1 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				8CE79C361BDA305F00F9D2C1 /* SettingViewController.swift */,
+				8CE79C371BDA305F00F9D2C1 /* SettingViewController.xib */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,8 +289,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CE79C351BDA27E600F9D2C1 /* RankViewController.xib in Resources */,
 				8CE79BDA1BD485B400F9D2C1 /* Assets.xcassets in Resources */,
 				8CE79C041BD50DCD00F9D2C1 /* LaunchScreen.xib in Resources */,
+				8CE79C391BDA305F00F9D2C1 /* SettingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +319,8 @@
 			files = (
 				8CE79C1C1BD87BC600F9D2C1 /* MainBoard.swift in Sources */,
 				8CE79C071BD50EC800F9D2C1 /* RootViewController.swift in Sources */,
+				8CE79C341BDA27E600F9D2C1 /* RankViewController.swift in Sources */,
+				8CE79C381BDA305F00F9D2C1 /* SettingViewController.swift in Sources */,
 				8CE79C1A1BD878A000F9D2C1 /* Food.swift in Sources */,
 				8CE79BD31BD485B400F9D2C1 /* AppDelegate.swift in Sources */,
 				8CE79C101BD6688800F9D2C1 /* Snake.swift in Sources */,

@@ -25,5 +25,4 @@ class SGNavigationController: UINavigationController {
         
         return true
     }
-
 }

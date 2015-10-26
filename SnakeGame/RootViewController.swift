@@ -56,9 +56,13 @@ class RootViewController: UIViewController {
     func onStartGameButtonClicked(sender: UIButton)
     {
         if self.mainBoard?.isGamePlaying == false {
-            print("开始游戏")
             let width: CGFloat = UIScreen.mainScreen().bounds.width
-            let height: CGFloat = UIScreen.mainScreen().bounds.height - 66
+            var height: CGFloat = UIScreen.mainScreen().bounds.height
+            if self.view.frame.width > self.view.frame.height {
+                height -= 32
+            } else {
+                height -= 66
+            }
             self.mainBoard?.setSize(width: width, height: height)
             self.mainBoard?.startGame()
         }
@@ -67,11 +71,15 @@ class RootViewController: UIViewController {
     func onRankButtonClicked(sender: UIButton)
     {
         print("排行点击")
+        let controller = RankViewController(nibName:"RankViewController", bundle:nil)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func onSettingButtonClicked(sender:UIButton)
     {
         print("设置点击")
+        let controller = RankViewController(nibName:"SettingViewController", bundle:nil)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     }
