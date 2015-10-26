@@ -18,7 +18,6 @@ class RootViewController: UIViewController {
         
         self.edgesForExtendedLayout = UIRectEdge.None
         self.title = "简易贪吃蛇";
-        self.view.backgroundColor = UIColor.yellowColor()
         self.configureNavigationItem()
         
         let width: CGFloat = UIScreen.mainScreen().bounds.width
