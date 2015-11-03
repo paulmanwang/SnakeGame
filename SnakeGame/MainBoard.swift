@@ -8,7 +8,20 @@
 
 import UIKit
 
+enum GameState {
+    case GameIsReady
+    case GameIsPlaying
+    case GameIsPaused
+}
+
+protocol MainBoardDelegate:class
+{
+    func gameScoreChanged(score: Int)
+    func gameOver()
+}
+
 class MainBoard: NSObject {
+    weak var delegate: MainBoardDelegate?
     var width: CGFloat = 0
     var height: CGFloat = 0
     let snakeBlobWidth: CGFloat = 20
@@ -18,15 +31,15 @@ class MainBoard: NSObject {
     var timer: NSTimer?
     var food: Food?
     
-    var isGamePlaying: Bool
+    var gameState: GameState
     
-    var score: Int = 0
+    var lastScore: Int = 0
     
     // MARK: - Init
     
     init(parent: UIView, width: CGFloat, height: CGFloat)
     {
-        self.isGamePlaying = false
+        self.gameState = .GameIsReady
         
         self.width = width
         self.height = height
@@ -94,10 +107,16 @@ class MainBoard: NSObject {
     
     func startGame()
     {
-        self.isGamePlaying = true
+        self.gameState = .GameIsPlaying
         self.makeFood()
         self.addSwapGestures()
         self.startTimer()
+    }
+    
+    func pauseGame()
+    {
+        self.gameState = .GameIsPaused
+        self.stopTimer()
     }
     
     // MARK: - GestureRecognizer
@@ -163,17 +182,21 @@ class MainBoard: NSObject {
     func timeout(timer:NSTimer)
     {
         let (isGameOver, currentPosition) = self.snake.moveWithFood(self.food!)
+        let score: Int = (self.snake.length() - 5) * 10 // 吃到食物得10分
+        if self.lastScore != score {
+            if self.delegate != nil {
+                self.delegate?.gameScoreChanged(score)
+            }
+        }
+        self.lastScore = score
+        
         if isGameOver {
             stopTimer()
-            let score: Int = self.snake.length() - 5
-            print("玩家得分 = \(score)")
             self.showAlertView()
         } else {
             let gameOver: Bool = self.isGameOver(currentPosition)
             if gameOver {
                 stopTimer()
-                let score: Int = self.snake.length() - 5
-                print("玩家得分 = \(score)")
                 self.showAlertView()
             } else {
                 self.makeFood()
@@ -191,8 +214,12 @@ class MainBoard: NSObject {
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
     {
-        self.isGamePlaying = false
+        self.gameState = .GameIsReady
         self.snake.resetSnake()
         self.food?.removeFromSuperview()
+        
+        if self.delegate != nil {
+            self.delegate?.gameOver()
+        }
     }
 }

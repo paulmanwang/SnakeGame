@@ -11,16 +11,16 @@
 		8CE79BDA1BD485B400F9D2C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79BD91BD485B400F9D2C1 /* Assets.xcassets */; };
 		8CE79BE81BD485B500F9D2C1 /* SnakeGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79BE71BD485B500F9D2C1 /* SnakeGameTests.swift */; };
 		8CE79BF31BD485B500F9D2C1 /* SnakeGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79BF21BD485B500F9D2C1 /* SnakeGameUITests.swift */; };
-		8CE79C041BD50DCD00F9D2C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C031BD50DCD00F9D2C1 /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
-		8CE79C071BD50EC800F9D2C1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		8CE79C101BD6688800F9D2C1 /* Snake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C0F1BD6688800F9D2C1 /* Snake.swift */; settings = {ASSET_TAGS = (); }; };
-		8CE79C1A1BD878A000F9D2C1 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C191BD878A000F9D2C1 /* Food.swift */; settings = {ASSET_TAGS = (); }; };
-		8CE79C1C1BD87BC600F9D2C1 /* MainBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C1B1BD87BC600F9D2C1 /* MainBoard.swift */; settings = {ASSET_TAGS = (); }; };
-		8CE79C201BD9E27F00F9D2C1 /* SGNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C1F1BD9E27F00F9D2C1 /* SGNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
-		8CE79C341BDA27E600F9D2C1 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C321BDA27E600F9D2C1 /* RankViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		8CE79C351BDA27E600F9D2C1 /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C331BDA27E600F9D2C1 /* RankViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		8CE79C381BDA305F00F9D2C1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C361BDA305F00F9D2C1 /* SettingViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		8CE79C391BDA305F00F9D2C1 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C371BDA305F00F9D2C1 /* SettingViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		8CE79C041BD50DCD00F9D2C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C031BD50DCD00F9D2C1 /* LaunchScreen.xib */; };
+		8CE79C071BD50EC800F9D2C1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */; };
+		8CE79C101BD6688800F9D2C1 /* Snake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C0F1BD6688800F9D2C1 /* Snake.swift */; };
+		8CE79C1A1BD878A000F9D2C1 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C191BD878A000F9D2C1 /* Food.swift */; };
+		8CE79C1C1BD87BC600F9D2C1 /* MainBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C1B1BD87BC600F9D2C1 /* MainBoard.swift */; };
+		8CE79C201BD9E27F00F9D2C1 /* SGNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C1F1BD9E27F00F9D2C1 /* SGNavigationController.swift */; };
+		8CE79C341BDA27E600F9D2C1 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C321BDA27E600F9D2C1 /* RankViewController.swift */; };
+		8CE79C351BDA27E600F9D2C1 /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C331BDA27E600F9D2C1 /* RankViewController.xib */; };
+		8CE79C381BDA305F00F9D2C1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C361BDA305F00F9D2C1 /* SettingViewController.swift */; };
+		8CE79C391BDA305F00F9D2C1 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C371BDA305F00F9D2C1 /* SettingViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,6 +253,7 @@
 				TargetAttributes = {
 					8CE79BCE1BD485B400F9D2C1 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = P4FHXKHPVB;
 					};
 					8CE79BE21BD485B400F9D2C1 = {
 						CreatedOnToolsVersion = 7.0;
@@ -447,11 +448,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SnakeGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = thunder.SnakeGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -459,11 +463,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SnakeGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = thunder.SnakeGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

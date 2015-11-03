@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootViewController: UIViewController {
+class RootViewController: UIViewController, MainBoardDelegate {
     
     var mainBoard: MainBoard?
     
@@ -23,6 +23,7 @@ class RootViewController: UIViewController {
         let width: CGFloat = UIScreen.mainScreen().bounds.width
         let height: CGFloat = UIScreen.mainScreen().bounds.height - 66
         self.mainBoard = MainBoard(parent: self.view, width: width, height: height)
+        self.mainBoard?.delegate = self;
     }
     
     override func viewWillDisappear(animated: Bool)
@@ -36,14 +37,16 @@ class RootViewController: UIViewController {
     }
     
     override func shouldAutorotate() -> Bool {
-        return self.mainBoard?.isGamePlaying == false
+        return self.mainBoard?.gameState == GameState.GameIsReady
     }
 
     // MARK: - Private
     
     func configureNavigationItem()
     {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "排行", style: UIBarButtonItemStyle.Plain, target: self, action: "onRankButtonClicked:")
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "排行", style: UIBarButtonItemStyle.Plain, target: self, action: "onRankButtonClicked:")
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "得分：0", style: UIBarButtonItemStyle.Plain, target: self, action: "onRankButtonClicked:")
         
         let startButton = UIBarButtonItem(title: "开始", style: UIBarButtonItemStyle.Plain, target: self, action: "onStartGameButtonClicked:")
         let settingButton = UIBarButtonItem(title: "设置", style: UIBarButtonItemStyle.Plain, target: self, action: "onSettingButtonClicked:")
@@ -54,7 +57,10 @@ class RootViewController: UIViewController {
     
     func onStartGameButtonClicked(sender: UIButton)
     {
-        if self.mainBoard?.isGamePlaying == false {
+        let startButton = self.navigationItem.rightBarButtonItems![1] as? UIBarButtonItem
+        if self.mainBoard?.gameState == GameState.GameIsReady
+            || self.mainBoard?.gameState == GameState.GameIsPaused {
+            startButton?.title = "暂停"
             let width: CGFloat = UIScreen.mainScreen().bounds.width
             var height: CGFloat = UIScreen.mainScreen().bounds.height
             if self.view.frame.width > self.view.frame.height {
@@ -64,6 +70,9 @@ class RootViewController: UIViewController {
             }
             self.mainBoard?.setSize(width: width, height: height)
             self.mainBoard?.startGame()
+        } else if self.mainBoard?.gameState == GameState.GameIsPlaying { // 暂停游戏
+            startButton?.title = "开始"
+            self.mainBoard?.pauseGame()
         }
     }
     
@@ -81,4 +90,17 @@ class RootViewController: UIViewController {
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
+    // MARK: - MainBoardDelegate
+    
+    func gameScoreChanged(score: Int)
+    {
+        print("score = \(score)")
+        self.navigationItem.leftBarButtonItem?.title = "得分：\(score)"
     }
+    
+    func gameOver() {
+        let startButton = self.navigationItem.rightBarButtonItems![1] as? UIBarButtonItem
+        startButton?.title = "开始"
+        self.navigationItem.leftBarButtonItem?.title = "得分：0"
+    }
+}
