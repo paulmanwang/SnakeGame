@@ -14,52 +14,48 @@ enum GameState {
     case GameIsPaused
 }
 
-protocol MainBoardDelegate:class
+protocol GameBoardDelegate: class
 {
     func gameScoreChanged(score: Int)
     func gameOver()
 }
 
-class MainBoard: NSObject {
-    weak var delegate: MainBoardDelegate?
-    var width: CGFloat = 0
-    var height: CGFloat = 0
+class GameBoard: UIView {
+    weak var delegate: GameBoardDelegate?
     let snakeBlobWidth: CGFloat = 20
     
-    var gameBoard: UIView
-    var snake: Snake
+    var snake: Snake?
     var timer: NSTimer?
     var food: Food?
-    
-    var gameState: GameState
-    
+    var gameState: GameState = .GameIsReady
     var lastScore: Int = 0
     
     // MARK: - Init
     
-    init(parent: UIView, width: CGFloat, height: CGFloat)
-    {
-        self.gameState = .GameIsReady
-        
-        self.width = width
-        self.height = height
-        
-        self.gameBoard = parent
-        self.snake = Snake(parentView: self.gameBoard, blobWidth:snakeBlobWidth, length: 5, defaultDirection: Direction.Right, originPoint: CGPointMake(0, 0))
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    func drawSankeAndFood() {
+        self.snake = Snake(parentView: self, blobWidth:snakeBlobWidth, length: 5, defaultDirection: Direction.Right, originPoint: CGPointMake(0, 0))
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Private APIs
     
-    func setSize(width wd: CGFloat, height ht: CGFloat)
-    {
-        self.width = wd;
-        self.height = ht;
+    func setSize(width wd: CGFloat, height ht: CGFloat) {
+        let position = self.frame.origin
+        self.frame = CGRectMake(position.x, position.y, wd, ht)
     }
     
-    func isGameOver(position: CGPoint) -> Bool
-    {
-        let maxX: CGFloat = CGFloat(Int(self.width / self.snakeBlobWidth)) * CGFloat(20)
-        let maxY: CGFloat = CGFloat(Int(self.height / self.snakeBlobWidth) - 1) * CGFloat(20)
+    func isGameOver(position: CGPoint) -> Bool {
+        let width = self.frame.size.width
+        let height = self.frame.size.height
+        let maxX: CGFloat = CGFloat(Int(width / self.snakeBlobWidth)) * CGFloat(20)
+        let maxY: CGFloat = CGFloat(Int(height / self.snakeBlobWidth) - 1) * CGFloat(20)
         let x: CGFloat = position.x
         let y: CGFloat = position.y
         
@@ -75,12 +71,13 @@ class MainBoard: NSObject {
         return  Int(arc4random_uniform(count)) + range.startIndex
     }
     
-    func makeFood()
-    {
+    func makeFood() {
         if food?.superview == nil {
+            let width = self.frame.size.width
+            let height = self.frame.size.height
             // 生成随机数
-            let maxX: Int = Int(self.width / self.snakeBlobWidth)
-            let maxY: Int = Int(self.height / self.snakeBlobWidth)
+            let maxX: Int = Int(width / self.snakeBlobWidth)
+            let maxY: Int = Int(height / self.snakeBlobWidth)
             let randomX = Int(arc4random()) % maxX
             let randomY = Int(arc4random()) % maxY
             
@@ -88,15 +85,15 @@ class MainBoard: NSObject {
             
             // 食物不能落在蛇的身上
             var valide = true
-            for var i = 0; i < self.snake.snakeBlobs.count; i++ {
-                let snakeBlob = self.snake.snakeBlobs[i] as? UIButton
+            for var i = 0; i < self.snake?.snakeBlobs.count; i++ {
+                let snakeBlob = self.snake?.snakeBlobs[i] as? UIButton
                 if snakeBlob?.frame.origin == position {
                     valide = false
                 }
             }
             
             if valide {
-                self.food = Food(parentView: self.gameBoard, position: position)
+                self.food = Food(parentView: self, position: position)
             } else {
                 self.makeFood()
             }
@@ -104,57 +101,52 @@ class MainBoard: NSObject {
     }
     
     // MARK: - Public APIs
-    
-    func startGame()
-    {
+    func startGame() {
         self.gameState = .GameIsPlaying
         self.makeFood()
         self.addSwapGestures()
         self.startTimer()
     }
     
-    func pauseGame()
-    {
+    func pauseGame() {
         self.gameState = .GameIsPaused
         self.stopTimer()
     }
     
     // MARK: - GestureRecognizer
     
-    func addSwapGestures()
-    {
+    func addSwapGestures() {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: "handleSwapGesture:")
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
-        self.gameBoard.addGestureRecognizer(swipeRight)
+        self.addGestureRecognizer(swipeRight)
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: "handleSwapGesture:")
         swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
-        self.gameBoard.addGestureRecognizer(swipeLeft)
+        self.addGestureRecognizer(swipeLeft)
         
         let swipeUp = UISwipeGestureRecognizer(target: self, action: "handleSwapGesture:")
         swipeUp.direction = UISwipeGestureRecognizerDirection.Up
-        self.gameBoard.addGestureRecognizer(swipeUp)
+        self.addGestureRecognizer(swipeUp)
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: "handleSwapGesture:")
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
-        self.gameBoard.addGestureRecognizer(swipeDown)
+        self.addGestureRecognizer(swipeDown)
     }
     
-    func handleSwapGesture(gestureRecongizer:UIGestureRecognizer)
-    {
+    func handleSwapGesture(gestureRecongizer:UIGestureRecognizer) {
         if let swipeGesture = gestureRecongizer as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.Left:
-                self.snake.changeDirection(Direction.Left)
+                self.snake?.changeDirection(Direction.Left)
                 
             case UISwipeGestureRecognizerDirection.Right:
-                self.snake.changeDirection(Direction.Right)
+                self.snake?.changeDirection(Direction.Right)
                 
             case UISwipeGestureRecognizerDirection.Up:
-                self.snake.changeDirection(Direction.Up)
+                self.snake?.changeDirection(Direction.Up)
                 
             case UISwipeGestureRecognizerDirection.Down:
-                self.snake.changeDirection(Direction.Down)
+                self.snake?.changeDirection(Direction.Down)
                 
             default:
                 break
@@ -164,25 +156,22 @@ class MainBoard: NSObject {
 
     // MARK: - NSTimer
     
-    func startTimer()
-    {
+    func startTimer() {
         if self.timer == nil {
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "timeout:", userInfo: nil, repeats: true)
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "onTimer:", userInfo: nil, repeats: true)
         }
     }
     
-    func stopTimer()
-    {
+    func stopTimer() {
         if self.timer != nil {
             self.timer!.invalidate()
             self.timer = nil
         }
     }
     
-    func timeout(timer:NSTimer)
-    {
-        let (isGameOver, currentPosition) = self.snake.moveWithFood(self.food!)
-        let score: Int = (self.snake.length() - 5) * 10 // 吃到食物得10分
+    func onTimer(timer:NSTimer) {
+        let (isGameOver, currentPosition) = (self.snake?.moveWithFood(self.food!))!
+        let score: Int = ((self.snake?.length())! - 5) * 10 // 吃到食物得10分
         if self.lastScore != score {
             if self.delegate != nil {
                 self.delegate?.gameScoreChanged(score)
@@ -206,16 +195,14 @@ class MainBoard: NSObject {
     
     // MARK: - AlertView
     
-    func showAlertView()
-    {
+    func showAlertView() {
         let alertView = UIAlertView(title: "温馨提示", message: "游戏结束！", delegate: self, cancelButtonTitle: "确定")
         alertView.show()
     }
     
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
-    {
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         self.gameState = .GameIsReady
-        self.snake.resetSnake()
+        self.snake?.resetSnake()
         self.food?.removeFromSuperview()
         
         if self.delegate != nil {

@@ -23,12 +23,12 @@ class Snake: NSObject {
     var parentView: UIView?
     
     // MARK: - Init
-    init(parentView:UIView, blobWidth: CGFloat, length: Int, defaultDirection:Direction, originPoint:CGPoint)
+    init(parentView: UIView, blobWidth: CGFloat, length: Int, defaultDirection:Direction, originPoint: CGPoint)
     {
         self.snakeBlobs = NSMutableArray()
         self.parentView = parentView
         for var index = 0; index < length; ++index {
-            let frame:CGRect = CGRectMake(SnakeBlobWidth * CGFloat(index), 0, SnakeBlobWidth, SnakeBlobWidth)
+            let frame: CGRect = CGRectMake(SnakeBlobWidth * CGFloat(index), 0, SnakeBlobWidth, SnakeBlobWidth)
             let snakeBlob = UIButton(frame: frame)
             snakeBlob.backgroundColor = UIColor.redColor()
             snakeBlob.layer.borderWidth = 1
@@ -124,7 +124,7 @@ class Snake: NSObject {
             self.snakeBlobs.insertObject(snakeBlob, atIndex: 0)
         }
         
-        // 如果蛇迟到了自己，则游戏结束
+        // 如果蛇吃到了自己，则游戏结束
         var isGameOver = false
         for var i = 0; i < self.snakeBlobs.count - 1; i++ {
             let snakeBlob = self.snakeBlobs[i] as? UIButton

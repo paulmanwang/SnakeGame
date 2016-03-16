@@ -15,7 +15,7 @@
 		8CE79C071BD50EC800F9D2C1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */; };
 		8CE79C101BD6688800F9D2C1 /* Snake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C0F1BD6688800F9D2C1 /* Snake.swift */; };
 		8CE79C1A1BD878A000F9D2C1 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C191BD878A000F9D2C1 /* Food.swift */; };
-		8CE79C1C1BD87BC600F9D2C1 /* MainBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C1B1BD87BC600F9D2C1 /* MainBoard.swift */; };
+		8CE79C1C1BD87BC600F9D2C1 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C1B1BD87BC600F9D2C1 /* GameBoard.swift */; };
 		8CE79C201BD9E27F00F9D2C1 /* SGNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C1F1BD9E27F00F9D2C1 /* SGNavigationController.swift */; };
 		8CE79C341BDA27E600F9D2C1 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C321BDA27E600F9D2C1 /* RankViewController.swift */; };
 		8CE79C351BDA27E600F9D2C1 /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C331BDA27E600F9D2C1 /* RankViewController.xib */; };
@@ -55,7 +55,7 @@
 		8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		8CE79C0F1BD6688800F9D2C1 /* Snake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snake.swift; sourceTree = "<group>"; };
 		8CE79C191BD878A000F9D2C1 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
-		8CE79C1B1BD87BC600F9D2C1 /* MainBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainBoard.swift; sourceTree = "<group>"; };
+		8CE79C1B1BD87BC600F9D2C1 /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		8CE79C1F1BD9E27F00F9D2C1 /* SGNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGNavigationController.swift; sourceTree = "<group>"; };
 		8CE79C321BDA27E600F9D2C1 /* RankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		8CE79C331BDA27E600F9D2C1 /* RankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankViewController.xib; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 			children = (
 				8CE79C0F1BD6688800F9D2C1 /* Snake.swift */,
 				8CE79C191BD878A000F9D2C1 /* Food.swift */,
-				8CE79C1B1BD87BC600F9D2C1 /* MainBoard.swift */,
+				8CE79C1B1BD87BC600F9D2C1 /* GameBoard.swift */,
 			);
 			name = GameLogic;
 			sourceTree = "<group>";
@@ -318,7 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CE79C1C1BD87BC600F9D2C1 /* MainBoard.swift in Sources */,
+				8CE79C1C1BD87BC600F9D2C1 /* GameBoard.swift in Sources */,
 				8CE79C071BD50EC800F9D2C1 /* RootViewController.swift in Sources */,
 				8CE79C341BDA27E600F9D2C1 /* RankViewController.swift in Sources */,
 				8CE79C381BDA305F00F9D2C1 /* SettingViewController.swift in Sources */,
