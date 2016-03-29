@@ -18,10 +18,18 @@ class SGNavigationController: UINavigationController {
         super.didReceiveMemoryWarning()
     }
     
+//    override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
+//        return UIInterfaceOrientation.LandscapeRight
+//    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Landscape
+    }
+    
     override func shouldAutorotate() -> Bool {
-        if (self.topViewController?.respondsToSelector("shouldAutorotate") != nil) {
-            return (self.topViewController?.shouldAutorotate())!
-        }
+//        if (self.topViewController?.respondsToSelector("shouldAutorotate") != nil) {
+//            return (self.topViewController?.shouldAutorotate())!
+//        }
         
         return true
     }

@@ -12,9 +12,9 @@ class Food: UIView {
     
     init(parentView:UIView, position: CGPoint)
     {
-        let frame: CGRect = CGRectMake(position.x, position.y, 20.0, 20.0)
+        let frame: CGRect = CGRectMake(position.x, position.y, SnakeBlobSize, SnakeBlobSize)
         super.init(frame: frame)
-        self.backgroundColor = UIColor.greenColor()
+        self.backgroundColor = UIColor.grayColor()
         parentView.addSubview(self)
     }
 

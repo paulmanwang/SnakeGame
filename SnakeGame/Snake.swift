@@ -19,18 +19,21 @@ enum Direction
 class Snake: NSObject {
     var snakeBlobs: NSMutableArray
     var direction: Direction = Direction.Right
-    let SnakeBlobWidth: CGFloat = 20.0
     var parentView: UIView?
+    var snakeColor: UIColor = UIColor.greenColor()
+    var originPoint: CGPoint
     
     // MARK: - Init
-    init(parentView: UIView, blobWidth: CGFloat, length: Int, defaultDirection:Direction, originPoint: CGPoint)
+    init(parentView: UIView, defaultDirection: Direction, originPoint: CGPoint, bodyColor: UIColor)
     {
+        self.snakeColor = bodyColor
         self.snakeBlobs = NSMutableArray()
         self.parentView = parentView
-        for var index = 0; index < length; ++index {
-            let frame: CGRect = CGRectMake(SnakeBlobWidth * CGFloat(index), 0, SnakeBlobWidth, SnakeBlobWidth)
+        self.originPoint = originPoint
+        for var index = 0; index < SnakeInitLength; ++index {
+            let frame: CGRect = CGRectMake(originPoint.x + SnakeBlobSize * CGFloat(index), originPoint.y, SnakeBlobSize, SnakeBlobSize)
             let snakeBlob = UIButton(frame: frame)
-            snakeBlob.backgroundColor = UIColor.redColor()
+            snakeBlob.backgroundColor = bodyColor
             snakeBlob.layer.borderWidth = 1
             snakeBlob.userInteractionEnabled = false
             parentView.addSubview(snakeBlob)
@@ -63,9 +66,9 @@ class Snake: NSObject {
         self.direction = Direction.Right
         
         for var index = 0; index < 5; ++index {
-            let frame:CGRect = CGRectMake(SnakeBlobWidth * CGFloat(index), 0, SnakeBlobWidth, SnakeBlobWidth)
+            let frame:CGRect = CGRectMake(self.originPoint.x+SnakeBlobSize * CGFloat(index), self.originPoint.y, SnakeBlobSize, SnakeBlobSize)
             let snakeBlob = UIButton(frame: frame)
-            snakeBlob.backgroundColor = UIColor.redColor()
+            snakeBlob.backgroundColor = self.snakeColor
             snakeBlob.layer.borderWidth = 1
             snakeBlob.userInteractionEnabled = false
             self.parentView!.addSubview(snakeBlob)
@@ -103,13 +106,13 @@ class Snake: NSObject {
         let originRect: CGRect = headSnakeBlob!.frame
         switch self.direction {
             case .Left:
-                headSnakeBlob!.frame = CGRectMake(originRect.origin.x - SnakeBlobWidth, originRect.origin.y, originRect.size.width, originRect.size.height)
+                headSnakeBlob!.frame = CGRectMake(originRect.origin.x - SnakeBlobSize, originRect.origin.y, originRect.size.width, originRect.size.height)
             case .Right:
-                headSnakeBlob!.frame = CGRectMake(originRect.origin.x + SnakeBlobWidth, originRect.origin.y, originRect.size.width, originRect.size.height)
+                headSnakeBlob!.frame = CGRectMake(originRect.origin.x + SnakeBlobSize, originRect.origin.y, originRect.size.width, originRect.size.height)
             case .Up:
-                headSnakeBlob!.frame = CGRectMake(originRect.origin.x, originRect.origin.y - SnakeBlobWidth, originRect.size.width, originRect.size.height)
+                headSnakeBlob!.frame = CGRectMake(originRect.origin.x, originRect.origin.y - SnakeBlobSize, originRect.size.width, originRect.size.height)
             case .Down:
-                headSnakeBlob!.frame = CGRectMake(originRect.origin.x , originRect.origin.y + SnakeBlobWidth, originRect.size.width, originRect.size.height)
+                headSnakeBlob!.frame = CGRectMake(originRect.origin.x , originRect.origin.y + SnakeBlobSize, originRect.size.width, originRect.size.height)
         }
         
         // 蛇头位置与食物重合时，说明吃食成功。吃到食物后，蛇尾增加长度1
@@ -117,7 +120,7 @@ class Snake: NSObject {
             food.removeFromSuperview()
             
             let snakeBlob = UIButton(frame: tailRect)
-            snakeBlob.backgroundColor = UIColor.redColor()
+            snakeBlob.backgroundColor = self.snakeColor
             snakeBlob.layer.borderWidth = 1
             snakeBlob.userInteractionEnabled = false
             self.parentView!.addSubview(snakeBlob)

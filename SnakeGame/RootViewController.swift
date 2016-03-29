@@ -7,41 +7,65 @@
 //
 
 import UIKit
+import GameKit
 
-class RootViewController: UIViewController, GameBoardDelegate {
-    
-    var topGameBoard: GameBoard?
-    var bottomGameBoard: GameBoard?
+let LeaderBoardID: String  = "SnakeGameRank001"
+let SnakeBlobSize: CGFloat = 20.0
+let SnakeInitLength: Int   = 4
+
+enum GameState {
+    case GameIsReady
+    case GameIsPlaying
+    case GameIsPaused
+}
+
+class RootViewController: UIViewController, GameBoardDelegate
+  {
+    var totalScore: Int = 0
+    var leftGameBoard: GameBoard?
+    var rightGameBoard: GameBoard?
+    var gameCenterController: GKGameCenterViewController?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.edgesForExtendedLayout = UIRectEdge.None
-        self.title = "简易贪吃蛇"
-        self.configureNavigationItem()
+        edgesForExtendedLayout = UIRectEdge.None
+        title = "简易贪吃蛇"
+        configureNavigationItem()
     }
     
     func drawGameBoards() {
+        for subview in self.view.subviews {
+            subview.removeFromSuperview()
+        }
+        
         let width: CGFloat = UIScreen.mainScreen().bounds.width
-        let height: CGFloat = UIScreen.mainScreen().bounds.height - 66
+        // 竖屏:44+20
+        // 横屏:32+20
+        let extraHeight: CGFloat = 32 + 20
+        let height: CGFloat = UIScreen.mainScreen().bounds.height - extraHeight
         
-        self.topGameBoard = GameBoard(frame: CGRectMake(0, 0, width, height/2))
-        self.topGameBoard?.backgroundColor = UIColor.blueColor()
-        self.topGameBoard?.drawSanke()
-        //self.topGameBoard?.delegate = self
-        self.view.addSubview(self.topGameBoard!);
+        leftGameBoard = GameBoard(frame: CGRectMake(0, 0, width/2, height))
+        leftGameBoard?.backgroundColor = UIColor.whiteColor()
+        leftGameBoard?.SnakeColor = UIColor.greenColor()
+        leftGameBoard?.initGameBord()
+        leftGameBoard?.delegate = self
+        view.addSubview(self.leftGameBoard!);
         
-        self.bottomGameBoard = GameBoard(frame: CGRectMake(0, height/2, width, height/2))
-        self.bottomGameBoard?.backgroundColor = UIColor.blackColor()
-        self.bottomGameBoard?.drawSanke()
-        //self.bottomGameBoard?.delegate = self
-        self.view.addSubview(self.bottomGameBoard!);
+        rightGameBoard = GameBoard(frame: CGRectMake(width/2, 0, width/2, height))
+        rightGameBoard?.backgroundColor = UIColor.whiteColor()
+        rightGameBoard?.SnakeColor = UIColor.redColor()
+        rightGameBoard?.initGameBord()
+        rightGameBoard?.delegate = self
+        view.addSubview(self.rightGameBoard!);
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
-        self.drawGameBoards();
+        print("width=\(self.view.frame.size.width)")
+        print("height=\(self.view.frame.size.height)")
+        drawGameBoards();
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -53,69 +77,124 @@ class RootViewController: UIViewController, GameBoardDelegate {
     }
     
     override func shouldAutorotate() -> Bool {
-        return self.topGameBoard?.gameState == GameState.GameIsReady
+        return true
     }
 
     // MARK: - Private
-    
     func configureNavigationItem()
     {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "得分：0", style: UIBarButtonItemStyle.Plain, target: self, action: "onRankButtonClicked:")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "得分：0", style: UIBarButtonItemStyle.Plain, target: self, action: "onRankButtonClicked:")
         
         let startButton = UIBarButtonItem(title: "开始", style: UIBarButtonItemStyle.Plain, target: self, action: "onStartGameButtonClicked:")
         let settingButton = UIBarButtonItem(title: "设置", style: UIBarButtonItemStyle.Plain, target: self, action: "onSettingButtonClicked:")
-        self.navigationItem.rightBarButtonItems = [settingButton, startButton]
+        navigationItem.rightBarButtonItems = [settingButton, startButton]
+    }
+    
+    func share() {
+        UMSocialSnsService.presentSnsIconSheetView(self, appKey:"56f2ad62e0f55a0548002657", shareText:"我在测试", shareImage:nil, shareToSnsNames:[UMShareToSina, UMShareToRenren, UMShareToDouban, UMShareToWechatTimeline, UMShareToWechatSession, UMShareToQzone], delegate:nil)
+    }
+    
+    func resetGame() {
+        let startButton = self.navigationItem.rightBarButtonItems![1]
+        startButton.title = "开始"
+        navigationItem.leftBarButtonItem?.title = "得分：0"
+        
+        leftGameBoard?.resetGame()
+        rightGameBoard?.resetGame()
     }
     
     // MARK: - Button actions
-    
     func onStartGameButtonClicked(sender: UIButton)
     {
-        self.topGameBoard?.startGame()
-        self.bottomGameBoard?.startGame()
-        return
-        
-        let startButton = self.navigationItem.rightBarButtonItems![1] as? UIBarButtonItem
-        if self.topGameBoard?.gameState == GameState.GameIsReady
-            || self.topGameBoard?.gameState == GameState.GameIsPaused {
-            startButton?.title = "暂停"
-            let width: CGFloat = UIScreen.mainScreen().bounds.width
-            var height: CGFloat = UIScreen.mainScreen().bounds.height - 66
-            if self.view.frame.width > self.view.frame.height {
-                height -= 32
-            } else {
-                height -= 66
-            }
-            self.topGameBoard?.startGame()
-        } else if self.topGameBoard?.gameState == GameState.GameIsPlaying { // 暂停游戏
-            startButton?.title = "开始"
-            self.topGameBoard?.pauseGame()
+        let startButton = self.navigationItem.rightBarButtonItems![1]
+        let title = startButton.title
+        if title == "开始" {
+            startButton.title = "暂停"
+            leftGameBoard?.startGame()
+            rightGameBoard?.startGame()
+        } else { // 暂停游戏
+            startButton.title = "开始"
+            leftGameBoard?.pauseGame()
+            rightGameBoard?.pauseGame()
         }
     }
     
-    func onRankButtonClicked(sender: UIButton)
-    {
-        print("排行点击")
-        let controller = RankViewController(nibName:"RankViewController", bundle:nil)
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
     func onSettingButtonClicked(sender:UIButton) {
-        print("设置点击")
-        let controller = RankViewController(nibName:"SettingViewController", bundle:nil)
-        self.navigationController?.pushViewController(controller, animated: true)
+        let controller = SettingViewController(nibName:"SettingViewController", bundle:nil)
+        navigationController?.pushViewController(controller, animated: true)
     }
     
-    // MARK: - MainBoardDelegate
-    
+    // MARK: - GameBoardDelegate
     func gameScoreChanged(score: Int) {
-        print("score = \(score)")
-        self.navigationItem.leftBarButtonItem?.title = "得分：\(score)"
+        totalScore += score;
+        print("totalScore = \(totalScore)")
+        navigationItem.leftBarButtonItem?.title = "得分：\(totalScore)"
     }
     
     func gameOver() {
-        let startButton = self.navigationItem.rightBarButtonItems![1] as? UIBarButtonItem
-        startButton?.title = "开始"
-        self.navigationItem.leftBarButtonItem?.title = "得分：0"
+        leftGameBoard?.stopTimer()
+        rightGameBoard?.stopTimer()
+        // 提交游戏得分
+        authenticateLocalUserWithSucess { () -> Void? in
+            self.reportScore()
+        }
+        showAlertView()
+    }
+    
+    // MARK: - LeaderBoard
+    func authenticateLocalUserWithSucess(success:()->Void?) {
+        let localPlayer = GKLocalPlayer.localPlayer()
+        if  localPlayer.authenticated {
+            success()
+            return
+        }
+        
+        localPlayer.authenticateHandler = {(viewController: UIViewController?, error: NSError?) -> Void in
+            if  viewController == nil {
+                if localPlayer.authenticated {
+                    print("授权成功")
+                    success()
+                } else {
+                    print("授权失败\(error)");
+                }
+            } else {
+                self.presentViewController(viewController!, animated: true
+                    , completion: nil)
+            }
+        }
+    }
+    
+    // 提交得分
+    func reportScore() {
+        let score: GKScore = GKScore(leaderboardIdentifier: LeaderBoardID)
+        score.value = 1000
+        GKScore.reportScores([score]) { (error: NSError?) -> Void in
+            if  error == nil {
+                print("提交成功")
+            } else {
+                print("提交失败")
+            }
+        }
+    }
+    
+    // MARK: - AlertView
+    func showAlertView() {
+        let alertView = UIAlertView()
+        alertView.title = NSLocalizedString("Nice Tips", comment:"")
+  //"温馨提示"
+        alertView.message = "好棒，您当前游戏得分为1000，赶紧分享给小伙伴吧"
+        alertView.addButtonWithTitle("取消")
+        alertView.addButtonWithTitle("分享")
+        alertView.cancelButtonIndex=0
+        alertView.delegate=self;
+        alertView.show()
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 0 {
+            resetGame()
+        } else {
+            share()
+        }
     }
 }

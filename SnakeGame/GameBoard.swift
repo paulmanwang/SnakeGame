@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum GameState {
-    case GameIsReady
-    case GameIsPlaying
-    case GameIsPaused
-}
-
 protocol GameBoardDelegate: class
 {
     func gameScoreChanged(score: Int)
@@ -22,12 +16,11 @@ protocol GameBoardDelegate: class
 
 class GameBoard: UIView {
     weak var delegate: GameBoardDelegate?
-    let snakeBlobWidth: CGFloat = 20
     
+    var SnakeColor: UIColor = UIColor.redColor()
     var snake: Snake?
     var timer: NSTimer?
     var food: Food?
-    var gameState: GameState = .GameIsReady
     var lastScore: Int = 0
     
     // MARK: - Init
@@ -36,8 +29,29 @@ class GameBoard: UIView {
         super.init(frame: frame)
     }
     
-    func drawSankeAndFood() {
-        self.snake = Snake(parentView: self, blobWidth:snakeBlobWidth, length: 5, defaultDirection: Direction.Right, originPoint: CGPointMake(0, 0))
+    func initGameBord() {
+        let width = self.frame.size.width
+        let height = self.frame.size.height
+        let maxX: CGFloat = CGFloat(Int(width / SnakeBlobSize)) * SnakeBlobSize
+        let maxY: CGFloat = CGFloat(Int(height / SnakeBlobSize)) * SnakeBlobSize
+        
+        let verWidth = (width - maxX) / 2.0
+        let horiWidth = (height - maxY) / 2.0
+        
+        self.snake = Snake(parentView: self, defaultDirection: Direction.Right, originPoint: CGPointMake(verWidth, horiWidth), bodyColor: SnakeColor)
+        
+        let label1 = UILabel(frame:CGRectMake(0, 0, width, horiWidth))
+        label1.backgroundColor = UIColor.yellowColor()
+        let label2 = UILabel(frame: CGRectMake(0, 0, verWidth, height))
+        label2.backgroundColor = UIColor.yellowColor()
+        let label3 = UILabel(frame: CGRectMake(0, height - horiWidth, width, horiWidth))
+        label3.backgroundColor = UIColor.yellowColor()
+        let label4 = UILabel(frame: CGRectMake(width - verWidth, 0, verWidth, height))
+        label4.backgroundColor = UIColor.yellowColor()
+        self.addSubview(label1)
+        self.addSubview(label2)
+        self.addSubview(label3)
+        self.addSubview(label4)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -54,8 +68,8 @@ class GameBoard: UIView {
     func isGameOver(position: CGPoint) -> Bool {
         let width = self.frame.size.width
         let height = self.frame.size.height
-        let maxX: CGFloat = CGFloat(Int(width / self.snakeBlobWidth)) * CGFloat(20)
-        let maxY: CGFloat = CGFloat(Int(height / self.snakeBlobWidth) - 1) * CGFloat(20)
+        let maxX: CGFloat = CGFloat(Int(width / SnakeBlobSize)) * SnakeBlobSize
+        let maxY: CGFloat = CGFloat(Int(height / SnakeBlobSize)) * SnakeBlobSize
         let x: CGFloat = position.x
         let y: CGFloat = position.y
         
@@ -76,12 +90,12 @@ class GameBoard: UIView {
             let width = self.frame.size.width
             let height = self.frame.size.height
             // 生成随机数
-            let maxX: Int = Int(width / self.snakeBlobWidth)
-            let maxY: Int = Int(height / self.snakeBlobWidth)
+            let maxX: Int = Int(width / SnakeBlobSize)
+            let maxY: Int = Int(height / SnakeBlobSize)
             let randomX = Int(arc4random()) % maxX
             let randomY = Int(arc4random()) % maxY
             
-            let position: CGPoint = CGPointMake(CGFloat(randomX) * 20, CGFloat(randomY) * 20)
+            let position: CGPoint = CGPointMake(CGFloat(randomX) * SnakeBlobSize, CGFloat(randomY) * SnakeBlobSize)
             
             // 食物不能落在蛇的身上
             var valide = true
@@ -102,14 +116,12 @@ class GameBoard: UIView {
     
     // MARK: - Public APIs
     func startGame() {
-        self.gameState = .GameIsPlaying
         self.makeFood()
         self.addSwapGestures()
         self.startTimer()
     }
     
     func pauseGame() {
-        self.gameState = .GameIsPaused
         self.stopTimer()
     }
     
@@ -158,7 +170,7 @@ class GameBoard: UIView {
     
     func startTimer() {
         if self.timer == nil {
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "onTimer:", userInfo: nil, repeats: true)
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "onTimer:", userInfo: nil, repeats: true)
         }
     }
     
@@ -171,42 +183,34 @@ class GameBoard: UIView {
     
     func onTimer(timer:NSTimer) {
         let (isGameOver, currentPosition) = (self.snake?.moveWithFood(self.food!))!
-        let score: Int = ((self.snake?.length())! - 5) * 10 // 吃到食物得10分
+        let score: Int = ((self.snake?.length())! - SnakeInitLength) * 10 // 吃到食物得10分
         if self.lastScore != score {
             if self.delegate != nil {
-                self.delegate?.gameScoreChanged(score)
+                self.delegate?.gameScoreChanged(score - self.lastScore)
             }
         }
         self.lastScore = score
         
         if isGameOver {
             stopTimer()
-            self.showAlertView()
+            if self.delegate != nil {
+                self.delegate?.gameOver()
+            }
         } else {
             let gameOver: Bool = self.isGameOver(currentPosition)
             if gameOver {
                 stopTimer()
-                self.showAlertView()
+                if self.delegate != nil {
+                    self.delegate?.gameOver()
+                }
             } else {
                 self.makeFood()
             }
         }
     }
     
-    // MARK: - AlertView
-    
-    func showAlertView() {
-        let alertView = UIAlertView(title: "温馨提示", message: "游戏结束！", delegate: self, cancelButtonTitle: "确定")
-        alertView.show()
-    }
-    
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        self.gameState = .GameIsReady
+    func resetGame() {
         self.snake?.resetSnake()
         self.food?.removeFromSuperview()
-        
-        if self.delegate != nil {
-            self.delegate?.gameOver()
-        }
     }
 }
