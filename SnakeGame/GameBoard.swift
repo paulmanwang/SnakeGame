@@ -181,7 +181,7 @@ class GameBoard: UIView {
     
     func startTimer() {
         if self.timer == nil {
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: "onTimer:", userInfo: nil, repeats: true)
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "onTimer:", userInfo: nil, repeats: true)
         }
     }
     

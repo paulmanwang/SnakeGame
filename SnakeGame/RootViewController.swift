@@ -30,6 +30,7 @@ class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDe
     var rightGameBoard: GameBoard?
     var gameCenterController: GKGameCenterViewController?
     var gameControlView: GameControlView?
+    var settingNavigationController: UINavigationController?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -164,8 +165,18 @@ class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDe
     }
     
     func gameControlViewDidClickedSettingButton() {
-        let controller = SettingViewController(nibName:"SettingViewController", bundle:nil)
-        navigationController?.pushViewController(controller, animated: true)
+        let settingViewController = SettingViewController(nibName:"SettingViewController", bundle:nil)
+        settingNavigationController = UINavigationController(rootViewController: settingViewController)
+        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 30))
+        closeButton.setTitle(NSLocalizedString("Close", comment: ""), forState: UIControlState.Normal)
+        closeButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        closeButton.addTarget(self, action: "OnCloseButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)
+        settingViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeButton)
+        self.presentViewController(settingNavigationController!, animated: true, completion: nil)
+    }
+    
+    func OnCloseButtonClicked() {
+        self.navigationController!.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - GameBoardDelegate
@@ -183,16 +194,18 @@ class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDe
             self.reportScore()
         }
         
-        resetGame()
         if  totalScore > highestScore {
             highestScore = totalScore
             NSUserDefaults.standardUserDefaults().setInteger(Int(highestScore), forKey: "HighestScore")
             NSUserDefaults.standardUserDefaults().synchronize()
         }
         
+        print("totalScore\(totalScore)")
         gameControlView?.setHighestScore(highestScore)
         gameControlView?.setCurrentScore(totalScore)
         gameControlView?.show()
+        
+        resetGame()
     }
     
     // MARK: - LeaderBoard
@@ -254,6 +267,10 @@ class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDe
     
     // 提交得分
     func reportScore() {
+        if totalScore < highestScore {
+            return
+        }
+        
         let score: GKScore = GKScore(leaderboardIdentifier: LeaderBoardID)
         score.value = totalScore
         GKScore.reportScores([score]) { (error: NSError?) -> Void in

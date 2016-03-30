@@ -217,15 +217,11 @@
 		8CE79BD11BD485B400F9D2C1 /* SnakeGame */ = {
 			isa = PBXGroup;
 			children = (
+				9262BDBB1CABE5140028E437 /* RootView */,
 				8CE79C311BDA27C200F9D2C1 /* Setting */,
 				8CE79C2F1BDA27A900F9D2C1 /* GameLogic */,
-				8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */,
-				8CE79C1F1BD9E27F00F9D2C1 /* SGNavigationController.swift */,
-				922FE12B1CA301FB008BD90B /* SnakeGame-Bridging-Header.h */,
 				8CE79C181BD8781700F9D2C1 /* AppGlobal */,
 				8CE79C111BD8779200F9D2C1 /* Resource */,
-				9262BDB01CABBB0A0028E437 /* Localizable.strings */,
-				9262BDB81CABD8670028E437 /* InfoPlist.strings */,
 			);
 			path = SnakeGame;
 			sourceTree = "<group>";
@@ -241,6 +237,8 @@
 		8CE79C181BD8781700F9D2C1 /* AppGlobal */ = {
 			isa = PBXGroup;
 			children = (
+				9262BDBC1CABE5360028E437 /* Localizable */,
+				922FE12B1CA301FB008BD90B /* SnakeGame-Bridging-Header.h */,
 				8CE79BDE1BD485B400F9D2C1 /* Info.plist */,
 				8CE79BD21BD485B400F9D2C1 /* AppDelegate.swift */,
 				8CE79C031BD50DCD00F9D2C1 /* LaunchScreen.xib */,
@@ -254,8 +252,6 @@
 				8CE79C0F1BD6688800F9D2C1 /* Snake.swift */,
 				8CE79C191BD878A000F9D2C1 /* Food.swift */,
 				8CE79C1B1BD87BC600F9D2C1 /* GameBoard.swift */,
-				927EB0981CAB734E002D4208 /* GameControlView.swift */,
-				927EB09A1CAB7375002D4208 /* GameControlView.xib */,
 			);
 			name = GameLogic;
 			sourceTree = "<group>";
@@ -325,6 +321,26 @@
 				922FE1A21CA30851008BD90B /* UMSShareListController.xib */,
 			);
 			path = SocialSDKXib;
+			sourceTree = "<group>";
+		};
+		9262BDBB1CABE5140028E437 /* RootView */ = {
+			isa = PBXGroup;
+			children = (
+				8CE79C051BD50EC800F9D2C1 /* RootViewController.swift */,
+				8CE79C1F1BD9E27F00F9D2C1 /* SGNavigationController.swift */,
+				927EB0981CAB734E002D4208 /* GameControlView.swift */,
+				927EB09A1CAB7375002D4208 /* GameControlView.xib */,
+			);
+			name = RootView;
+			sourceTree = "<group>";
+		};
+		9262BDBC1CABE5360028E437 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				9262BDB01CABBB0A0028E437 /* Localizable.strings */,
+				9262BDB81CABD8670028E437 /* InfoPlist.strings */,
+			);
+			name = Localizable;
 			sourceTree = "<group>";
 		};
 		927EB0551CAADE2E002D4208 /* UMengFeedback_SDK */ = {

@@ -8,6 +8,7 @@
 
 // 标题
 "Easy Snake Game" = "简易贪吃蛇";
+"Close" = "关闭";
 
 // 游戏控制界面
 "Play" = "开始游戏";
@@ -17,7 +18,7 @@
 "Highest Score" = "最高得分";
 
 // 设置界面
-"Game difficulty" = "游戏难度";
+"Game Difficulty" = "游戏难度";
 "Feedback" = "意见反馈";
 "About" = "关于";
 "Done" = "完成";
