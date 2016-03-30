@@ -7,10 +7,9 @@
 //
 
 import UIKit
-
+let UMAppKey = "56f2ad62e0f55a0548002657"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    let appKey = "56f2ad62e0f55a0548002657"
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -23,11 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navCtrl = SGNavigationController(rootViewController:root)
         self.window!.rootViewController = navCtrl
         self.window!.makeKeyAndVisible()
+//        
+//        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.None)
+//        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.None)
         
-        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.None)
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.None)
-        
-        UMSocialData.setAppKey(appKey)
+        UMSocialData.setAppKey(UMAppKey)
+        UMFeedback.setAppkey(UMAppKey)
         
         return true
     }

@@ -22,6 +22,7 @@ class GameBoard: UIView {
     var timer: NSTimer?
     var food: Food?
     var lastScore: Int = 0
+    var offsetPoint: CGPoint?
     
     // MARK: - Init
     
@@ -30,6 +31,11 @@ class GameBoard: UIView {
     }
     
     func initGameBord() {
+        // 设置背景颜色
+        self.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.8)
+        self.clipsToBounds = true
+        
+        // 画蛇
         let width = self.frame.size.width
         let height = self.frame.size.height
         let maxX: CGFloat = CGFloat(Int(width / SnakeBlobSize)) * SnakeBlobSize
@@ -37,21 +43,26 @@ class GameBoard: UIView {
         
         let verWidth = (width - maxX) / 2.0
         let horiWidth = (height - maxY) / 2.0
+        offsetPoint = CGPointMake(verWidth, horiWidth)
         
-        self.snake = Snake(parentView: self, defaultDirection: Direction.Right, originPoint: CGPointMake(verWidth, horiWidth), bodyColor: SnakeColor)
+        self.snake = Snake(parentView: self, defaultDirection: Direction.Right, originPoint: offsetPoint!, bodyColor: SnakeColor)
         
+        // 绘制边框
         let label1 = UILabel(frame:CGRectMake(0, 0, width, horiWidth))
-        label1.backgroundColor = UIColor.yellowColor()
+        label1.backgroundColor = BorderColor
         let label2 = UILabel(frame: CGRectMake(0, 0, verWidth, height))
-        label2.backgroundColor = UIColor.yellowColor()
+        label2.backgroundColor = BorderColor
         let label3 = UILabel(frame: CGRectMake(0, height - horiWidth, width, horiWidth))
-        label3.backgroundColor = UIColor.yellowColor()
-        let label4 = UILabel(frame: CGRectMake(width - verWidth, 0, verWidth, height))
-        label4.backgroundColor = UIColor.yellowColor()
+        label3.backgroundColor = BorderColor
+        let label4 = UILabel(frame: CGRectMake(width - verWidth, 0, verWidth + 1, height))
+        label4.backgroundColor = BorderColor
         self.addSubview(label1)
         self.addSubview(label2)
         self.addSubview(label3)
         self.addSubview(label4)
+        
+        // 生成实物
+        //makeFood()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -95,7 +106,7 @@ class GameBoard: UIView {
             let randomX = Int(arc4random()) % maxX
             let randomY = Int(arc4random()) % maxY
             
-            let position: CGPoint = CGPointMake(CGFloat(randomX) * SnakeBlobSize, CGFloat(randomY) * SnakeBlobSize)
+            let position: CGPoint = CGPointMake((offsetPoint?.x)! + CGFloat(randomX) * SnakeBlobSize, (offsetPoint?.y)!+CGFloat(randomY) * SnakeBlobSize)
             
             // 食物不能落在蛇的身上
             var valide = true
@@ -116,13 +127,13 @@ class GameBoard: UIView {
     
     // MARK: - Public APIs
     func startGame() {
-        self.makeFood()
-        self.addSwapGestures()
-        self.startTimer()
+        makeFood()
+        addSwapGestures()
+        startTimer()
     }
     
     func pauseGame() {
-        self.stopTimer()
+        stopTimer()
     }
     
     // MARK: - GestureRecognizer
@@ -170,7 +181,7 @@ class GameBoard: UIView {
     
     func startTimer() {
         if self.timer == nil {
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "onTimer:", userInfo: nil, repeats: true)
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: "onTimer:", userInfo: nil, repeats: true)
         }
     }
     

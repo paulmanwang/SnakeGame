@@ -31,6 +31,33 @@
 		922FE1AF1CA30851008BD90B /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 922FE1A31CA30851008BD90B /* UMSocialSDKResourcesNew.bundle */; };
 		9263378D1CAAB68300E1CD84 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9263378B1CAAB68300E1CD84 /* AboutViewController.swift */; };
 		9263378E1CAAB68300E1CD84 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9263378C1CAAB68300E1CD84 /* AboutViewController.xib */; };
+		927EB07F1CAADE2E002D4208 /* UMFeedbackLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 927EB0561CAADE2E002D4208 /* UMFeedbackLocalizable.strings */; };
+		927EB0801CAADE2E002D4208 /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 927EB0581CAADE2E002D4208 /* libUMFeedback.a */; };
+		927EB0811CAADE2E002D4208 /* bubble_min@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB05A1CAADE2E002D4208 /* bubble_min@2x.png */; };
+		927EB0821CAADE2E002D4208 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB05B1CAADE2E002D4208 /* cancel@2x.png */; };
+		927EB0831CAADE2E002D4208 /* microphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB05C1CAADE2E002D4208 /* microphone@2x.png */; };
+		927EB0841CAADE2E002D4208 /* save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB05D1CAADE2E002D4208 /* save@2x.png */; };
+		927EB0851CAADE2E002D4208 /* ToolViewInputText@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB05E1CAADE2E002D4208 /* ToolViewInputText@2x.png */; };
+		927EB0861CAADE2E002D4208 /* ToolViewInputTextHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB05F1CAADE2E002D4208 /* ToolViewInputTextHL@2x.png */; };
+		927EB0871CAADE2E002D4208 /* ToolViewInputVoice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB0601CAADE2E002D4208 /* ToolViewInputVoice@2x.png */; };
+		927EB0881CAADE2E002D4208 /* ToolViewInputVoiceHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB0611CAADE2E002D4208 /* ToolViewInputVoiceHL@2x.png */; };
+		927EB0891CAADE2E002D4208 /* umeng_add_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB0621CAADE2E002D4208 /* umeng_add_photo@2x.png */; };
+		927EB08A1CAADE2E002D4208 /* umeng_fb_audio_dialog_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB0631CAADE2E002D4208 /* umeng_fb_audio_dialog_cancel@2x.png */; };
+		927EB08B1CAADE2E002D4208 /* umeng_fb_audio_dialog_content@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB0641CAADE2E002D4208 /* umeng_fb_audio_dialog_content@2x.png */; };
+		927EB08C1CAADE2E002D4208 /* umeng_fb_audio_play_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB0651CAADE2E002D4208 /* umeng_fb_audio_play_01@2x.png */; };
+		927EB08D1CAADE2E002D4208 /* umeng_fb_audio_play_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB0661CAADE2E002D4208 /* umeng_fb_audio_play_02@2x.png */; };
+		927EB08E1CAADE2E002D4208 /* umeng_fb_audio_play_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB0671CAADE2E002D4208 /* umeng_fb_audio_play_03@2x.png */; };
+		927EB08F1CAADE2E002D4208 /* umeng_fb_audio_play_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 927EB0681CAADE2E002D4208 /* umeng_fb_audio_play_default@2x.png */; };
+		927EB0901CAADE2E002D4208 /* UMFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 927EB06B1CAADE2E002D4208 /* UMFeedbackViewController.m */; };
+		927EB0911CAADE2E002D4208 /* libUMOpus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 927EB06E1CAADE2E002D4208 /* libUMOpus.a */; };
+		927EB0921CAADE2E002D4208 /* UMChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 927EB0731CAADE2E002D4208 /* UMChatTableViewCell.m */; };
+		927EB0931CAADE2E002D4208 /* UMChatToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 927EB0751CAADE2E002D4208 /* UMChatToolBar.m */; };
+		927EB0941CAADE2E002D4208 /* UMFullScreenPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927EB0771CAADE2E002D4208 /* UMFullScreenPhotoView.m */; };
+		927EB0951CAADE2E002D4208 /* UMPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 927EB0791CAADE2E002D4208 /* UMPostTableViewCell.m */; };
+		927EB0961CAADE2E002D4208 /* UMRadialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927EB07B1CAADE2E002D4208 /* UMRadialView.m */; };
+		927EB0971CAADE2E002D4208 /* UMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927EB07D1CAADE2E002D4208 /* UMTextView.m */; };
+		927EB0991CAB734E002D4208 /* GameControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927EB0981CAB734E002D4208 /* GameControlView.swift */; };
+		927EB09B1CAB7375002D4208 /* GameControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927EB09A1CAB7375002D4208 /* GameControlView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +119,45 @@
 		922FE1A41CA30851008BD90B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UMSocialLocalizable.strings"; sourceTree = "<group>"; };
 		9263378B1CAAB68300E1CD84 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		9263378C1CAAB68300E1CD84 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		927EB0571CAADE2E002D4208 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/UMFeedbackLocalizable.strings; sourceTree = "<group>"; };
+		927EB0581CAADE2E002D4208 /* libUMFeedback.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMFeedback.a; sourceTree = "<group>"; };
+		927EB05A1CAADE2E002D4208 /* bubble_min@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_min@2x.png"; sourceTree = "<group>"; };
+		927EB05B1CAADE2E002D4208 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
+		927EB05C1CAADE2E002D4208 /* microphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone@2x.png"; sourceTree = "<group>"; };
+		927EB05D1CAADE2E002D4208 /* save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save@2x.png"; sourceTree = "<group>"; };
+		927EB05E1CAADE2E002D4208 /* ToolViewInputText@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewInputText@2x.png"; sourceTree = "<group>"; };
+		927EB05F1CAADE2E002D4208 /* ToolViewInputTextHL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewInputTextHL@2x.png"; sourceTree = "<group>"; };
+		927EB0601CAADE2E002D4208 /* ToolViewInputVoice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewInputVoice@2x.png"; sourceTree = "<group>"; };
+		927EB0611CAADE2E002D4208 /* ToolViewInputVoiceHL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewInputVoiceHL@2x.png"; sourceTree = "<group>"; };
+		927EB0621CAADE2E002D4208 /* umeng_add_photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "umeng_add_photo@2x.png"; sourceTree = "<group>"; };
+		927EB0631CAADE2E002D4208 /* umeng_fb_audio_dialog_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "umeng_fb_audio_dialog_cancel@2x.png"; sourceTree = "<group>"; };
+		927EB0641CAADE2E002D4208 /* umeng_fb_audio_dialog_content@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "umeng_fb_audio_dialog_content@2x.png"; sourceTree = "<group>"; };
+		927EB0651CAADE2E002D4208 /* umeng_fb_audio_play_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "umeng_fb_audio_play_01@2x.png"; sourceTree = "<group>"; };
+		927EB0661CAADE2E002D4208 /* umeng_fb_audio_play_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "umeng_fb_audio_play_02@2x.png"; sourceTree = "<group>"; };
+		927EB0671CAADE2E002D4208 /* umeng_fb_audio_play_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "umeng_fb_audio_play_03@2x.png"; sourceTree = "<group>"; };
+		927EB0681CAADE2E002D4208 /* umeng_fb_audio_play_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "umeng_fb_audio_play_default@2x.png"; sourceTree = "<group>"; };
+		927EB0691CAADE2E002D4208 /* UMFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedback.h; sourceTree = "<group>"; };
+		927EB06A1CAADE2E002D4208 /* UMFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedbackViewController.h; sourceTree = "<group>"; };
+		927EB06B1CAADE2E002D4208 /* UMFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMFeedbackViewController.m; sourceTree = "<group>"; };
+		927EB06C1CAADE2E002D4208 /* UMOpenMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMOpenMacros.h; sourceTree = "<group>"; };
+		927EB06E1CAADE2E002D4208 /* libUMOpus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMOpus.a; sourceTree = "<group>"; };
+		927EB06F1CAADE2E002D4208 /* UMOpus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMOpus.h; sourceTree = "<group>"; };
+		927EB0701CAADE2E002D4208 /* UMRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMRecorder.h; sourceTree = "<group>"; };
+		927EB0721CAADE2E002D4208 /* UMChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMChatTableViewCell.h; sourceTree = "<group>"; };
+		927EB0731CAADE2E002D4208 /* UMChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMChatTableViewCell.m; sourceTree = "<group>"; };
+		927EB0741CAADE2E002D4208 /* UMChatToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMChatToolBar.h; sourceTree = "<group>"; };
+		927EB0751CAADE2E002D4208 /* UMChatToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMChatToolBar.m; sourceTree = "<group>"; };
+		927EB0761CAADE2E002D4208 /* UMFullScreenPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFullScreenPhotoView.h; sourceTree = "<group>"; };
+		927EB0771CAADE2E002D4208 /* UMFullScreenPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMFullScreenPhotoView.m; sourceTree = "<group>"; };
+		927EB0781CAADE2E002D4208 /* UMPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMPostTableViewCell.h; sourceTree = "<group>"; };
+		927EB0791CAADE2E002D4208 /* UMPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMPostTableViewCell.m; sourceTree = "<group>"; };
+		927EB07A1CAADE2E002D4208 /* UMRadialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMRadialView.h; sourceTree = "<group>"; };
+		927EB07B1CAADE2E002D4208 /* UMRadialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMRadialView.m; sourceTree = "<group>"; };
+		927EB07C1CAADE2E002D4208 /* UMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMTextView.h; sourceTree = "<group>"; };
+		927EB07D1CAADE2E002D4208 /* UMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMTextView.m; sourceTree = "<group>"; };
+		927EB07E1CAADE2E002D4208 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UMFeedbackLocalizable.strings"; sourceTree = "<group>"; };
+		927EB0981CAB734E002D4208 /* GameControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameControlView.swift; sourceTree = "<group>"; };
+		927EB09A1CAB7375002D4208 /* GameControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameControlView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +165,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927EB0801CAADE2E002D4208 /* libUMFeedback.a in Frameworks */,
 				922FE1A61CA30851008BD90B /* libUMSocial_Sdk_5.0.1.a in Frameworks */,
+				927EB0911CAADE2E002D4208 /* libUMOpus.a in Frameworks */,
 				922FE1881CA30776008BD90B /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +246,8 @@
 				8CE79C0F1BD6688800F9D2C1 /* Snake.swift */,
 				8CE79C191BD878A000F9D2C1 /* Food.swift */,
 				8CE79C1B1BD87BC600F9D2C1 /* GameBoard.swift */,
+				927EB0981CAB734E002D4208 /* GameControlView.swift */,
+				927EB09A1CAB7375002D4208 /* GameControlView.xib */,
 			);
 			name = GameLogic;
 			sourceTree = "<group>";
@@ -196,6 +266,7 @@
 		922FE1891CA307C3008BD90B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				927EB0551CAADE2E002D4208 /* UMengFeedback_SDK */,
 				922FE18A1CA30851008BD90B /* UMSocial_Sdk_5.0.1 */,
 				922FE1871CA30776008BD90B /* SystemConfiguration.framework */,
 			);
@@ -246,6 +317,74 @@
 				922FE1A21CA30851008BD90B /* UMSShareListController.xib */,
 			);
 			path = SocialSDKXib;
+			sourceTree = "<group>";
+		};
+		927EB0551CAADE2E002D4208 /* UMengFeedback_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				927EB0561CAADE2E002D4208 /* UMFeedbackLocalizable.strings */,
+				927EB0581CAADE2E002D4208 /* libUMFeedback.a */,
+				927EB0591CAADE2E002D4208 /* Resources */,
+				927EB0691CAADE2E002D4208 /* UMFeedback.h */,
+				927EB06A1CAADE2E002D4208 /* UMFeedbackViewController.h */,
+				927EB06B1CAADE2E002D4208 /* UMFeedbackViewController.m */,
+				927EB06C1CAADE2E002D4208 /* UMOpenMacros.h */,
+				927EB06D1CAADE2E002D4208 /* UMOpus */,
+				927EB0701CAADE2E002D4208 /* UMRecorder.h */,
+				927EB0711CAADE2E002D4208 /* Views */,
+			);
+			name = UMengFeedback_SDK;
+			path = SnakeGame/UMengFeedback_SDK;
+			sourceTree = "<group>";
+		};
+		927EB0591CAADE2E002D4208 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				927EB05A1CAADE2E002D4208 /* bubble_min@2x.png */,
+				927EB05B1CAADE2E002D4208 /* cancel@2x.png */,
+				927EB05C1CAADE2E002D4208 /* microphone@2x.png */,
+				927EB05D1CAADE2E002D4208 /* save@2x.png */,
+				927EB05E1CAADE2E002D4208 /* ToolViewInputText@2x.png */,
+				927EB05F1CAADE2E002D4208 /* ToolViewInputTextHL@2x.png */,
+				927EB0601CAADE2E002D4208 /* ToolViewInputVoice@2x.png */,
+				927EB0611CAADE2E002D4208 /* ToolViewInputVoiceHL@2x.png */,
+				927EB0621CAADE2E002D4208 /* umeng_add_photo@2x.png */,
+				927EB0631CAADE2E002D4208 /* umeng_fb_audio_dialog_cancel@2x.png */,
+				927EB0641CAADE2E002D4208 /* umeng_fb_audio_dialog_content@2x.png */,
+				927EB0651CAADE2E002D4208 /* umeng_fb_audio_play_01@2x.png */,
+				927EB0661CAADE2E002D4208 /* umeng_fb_audio_play_02@2x.png */,
+				927EB0671CAADE2E002D4208 /* umeng_fb_audio_play_03@2x.png */,
+				927EB0681CAADE2E002D4208 /* umeng_fb_audio_play_default@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		927EB06D1CAADE2E002D4208 /* UMOpus */ = {
+			isa = PBXGroup;
+			children = (
+				927EB06E1CAADE2E002D4208 /* libUMOpus.a */,
+				927EB06F1CAADE2E002D4208 /* UMOpus.h */,
+			);
+			path = UMOpus;
+			sourceTree = "<group>";
+		};
+		927EB0711CAADE2E002D4208 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				927EB0721CAADE2E002D4208 /* UMChatTableViewCell.h */,
+				927EB0731CAADE2E002D4208 /* UMChatTableViewCell.m */,
+				927EB0741CAADE2E002D4208 /* UMChatToolBar.h */,
+				927EB0751CAADE2E002D4208 /* UMChatToolBar.m */,
+				927EB0761CAADE2E002D4208 /* UMFullScreenPhotoView.h */,
+				927EB0771CAADE2E002D4208 /* UMFullScreenPhotoView.m */,
+				927EB0781CAADE2E002D4208 /* UMPostTableViewCell.h */,
+				927EB0791CAADE2E002D4208 /* UMPostTableViewCell.m */,
+				927EB07A1CAADE2E002D4208 /* UMRadialView.h */,
+				927EB07B1CAADE2E002D4208 /* UMRadialView.m */,
+				927EB07C1CAADE2E002D4208 /* UMTextView.h */,
+				927EB07D1CAADE2E002D4208 /* UMTextView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,17 +493,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				922FE1AB1CA30851008BD90B /* UMShareEditViewControlleriPad.xib in Resources */,
+				927EB08A1CAADE2E002D4208 /* umeng_fb_audio_dialog_cancel@2x.png in Resources */,
+				927EB0861CAADE2E002D4208 /* ToolViewInputTextHL@2x.png in Resources */,
 				922FE1AD1CA30851008BD90B /* UMSnsAccountViewController.xib in Resources */,
+				927EB0831CAADE2E002D4208 /* microphone@2x.png in Resources */,
+				927EB08C1CAADE2E002D4208 /* umeng_fb_audio_play_01@2x.png in Resources */,
 				922FE1A81CA30851008BD90B /* UMSCommentInputController.xib in Resources */,
 				922FE1A71CA30851008BD90B /* UMSCommentDetailController.xib in Resources */,
+				927EB08D1CAADE2E002D4208 /* umeng_fb_audio_play_02@2x.png in Resources */,
+				927EB0821CAADE2E002D4208 /* cancel@2x.png in Resources */,
+				927EB0841CAADE2E002D4208 /* save@2x.png in Resources */,
+				927EB0891CAADE2E002D4208 /* umeng_add_photo@2x.png in Resources */,
+				927EB08B1CAADE2E002D4208 /* umeng_fb_audio_dialog_content@2x.png in Resources */,
 				8CE79BDA1BD485B400F9D2C1 /* Assets.xcassets in Resources */,
+				927EB08E1CAADE2E002D4208 /* umeng_fb_audio_play_03@2x.png in Resources */,
 				922FE1AF1CA30851008BD90B /* UMSocialSDKResourcesNew.bundle in Resources */,
 				922FE1A91CA30851008BD90B /* UMSCommentInputControlleriPad.xib in Resources */,
+				927EB09B1CAB7375002D4208 /* GameControlView.xib in Resources */,
 				922FE1AA1CA30851008BD90B /* UMShareEditViewController.xib in Resources */,
+				927EB08F1CAADE2E002D4208 /* umeng_fb_audio_play_default@2x.png in Resources */,
 				9263378E1CAAB68300E1CD84 /* AboutViewController.xib in Resources */,
 				922FE1AE1CA30851008BD90B /* UMSShareListController.xib in Resources */,
 				922FE1A51CA30851008BD90B /* UMSocialLocalizable.strings in Resources */,
+				927EB07F1CAADE2E002D4208 /* UMFeedbackLocalizable.strings in Resources */,
+				927EB0881CAADE2E002D4208 /* ToolViewInputVoiceHL@2x.png in Resources */,
+				927EB0851CAADE2E002D4208 /* ToolViewInputText@2x.png in Resources */,
 				8CE79C041BD50DCD00F9D2C1 /* LaunchScreen.xib in Resources */,
+				927EB0811CAADE2E002D4208 /* bubble_min@2x.png in Resources */,
+				927EB0871CAADE2E002D4208 /* ToolViewInputVoice@2x.png in Resources */,
 				8CE79C391BDA305F00F9D2C1 /* SettingViewController.xib in Resources */,
 				922FE1AC1CA30851008BD90B /* UMSLoginViewController.xib in Resources */,
 			);
@@ -392,13 +548,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CE79C1C1BD87BC600F9D2C1 /* GameBoard.swift in Sources */,
+				927EB0931CAADE2E002D4208 /* UMChatToolBar.m in Sources */,
+				927EB0901CAADE2E002D4208 /* UMFeedbackViewController.m in Sources */,
 				8CE79C071BD50EC800F9D2C1 /* RootViewController.swift in Sources */,
 				8CE79C381BDA305F00F9D2C1 /* SettingViewController.swift in Sources */,
 				8CE79C1A1BD878A000F9D2C1 /* Food.swift in Sources */,
+				927EB0991CAB734E002D4208 /* GameControlView.swift in Sources */,
 				8CE79BD31BD485B400F9D2C1 /* AppDelegate.swift in Sources */,
 				8CE79C101BD6688800F9D2C1 /* Snake.swift in Sources */,
+				927EB0941CAADE2E002D4208 /* UMFullScreenPhotoView.m in Sources */,
 				9263378D1CAAB68300E1CD84 /* AboutViewController.swift in Sources */,
 				8CE79C201BD9E27F00F9D2C1 /* SGNavigationController.swift in Sources */,
+				927EB0971CAADE2E002D4208 /* UMTextView.m in Sources */,
+				927EB0921CAADE2E002D4208 /* UMChatTableViewCell.m in Sources */,
+				927EB0951CAADE2E002D4208 /* UMPostTableViewCell.m in Sources */,
+				927EB0961CAADE2E002D4208 /* UMRadialView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +603,15 @@
 				922FE1A41CA30851008BD90B /* zh-Hans */,
 			);
 			name = UMSocialLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		927EB0561CAADE2E002D4208 /* UMFeedbackLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				927EB0571CAADE2E002D4208 /* Base */,
+				927EB07E1CAADE2E002D4208 /* zh-Hans */,
+			);
+			name = UMFeedbackLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -540,7 +713,14 @@
 				INFOPLIST_FILE = SnakeGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/SnakeGame/UMSocial_Sdk_5.0.1";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/SnakeGame/UMSocial_Sdk_5.0.1",
+					"$(PROJECT_DIR)/SnakeGame/UMFeedback_iOS_2.3.4/UMengFeedback_SDK",
+					"$(PROJECT_DIR)/SnakeGame/UMFeedback_iOS_2.3.4/UMengFeedback_SDK/UMOpus",
+					"$(PROJECT_DIR)/SnakeGame/UMFeedback_iOS_2.3.4/UMessage_Sdk_1.1.0",
+					"$(PROJECT_DIR)/SnakeGame/UMengFeedback_SDK",
+					"$(PROJECT_DIR)/SnakeGame/UMengFeedback_SDK/UMOpus",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.springcome.SnakeGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2af979c0-f2be-47b2-8951-2ddb89539609";
@@ -562,7 +742,14 @@
 				INFOPLIST_FILE = SnakeGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/SnakeGame/UMSocial_Sdk_5.0.1";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/SnakeGame/UMSocial_Sdk_5.0.1",
+					"$(PROJECT_DIR)/SnakeGame/UMFeedback_iOS_2.3.4/UMengFeedback_SDK",
+					"$(PROJECT_DIR)/SnakeGame/UMFeedback_iOS_2.3.4/UMengFeedback_SDK/UMOpus",
+					"$(PROJECT_DIR)/SnakeGame/UMFeedback_iOS_2.3.4/UMessage_Sdk_1.1.0",
+					"$(PROJECT_DIR)/SnakeGame/UMengFeedback_SDK",
+					"$(PROJECT_DIR)/SnakeGame/UMengFeedback_SDK/UMOpus",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.springcome.SnakeGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2af979c0-f2be-47b2-8951-2ddb89539609";

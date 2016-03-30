@@ -3,3 +3,4 @@
 //
 
 #import "UMSocial.h"
+#import "UMFeedback.h"

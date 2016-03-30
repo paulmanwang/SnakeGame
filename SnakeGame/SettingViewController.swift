@@ -16,14 +16,16 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var pickerView: UIPickerView!
     
     // MARK: - Property
-    let tableViewDatasources = ["游戏难度", "得分排行榜", "意见反馈", "关于"]
+    let tableViewDatasources = ["游戏难度", "意见反馈", "关于"]
     let pickerViewDatasources = ["低等难度", "中等难度", "高等难度"]
 
     // Mark: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "设置"
         tableView.tableFooterView = UIView()
         containerView.hidden = true
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +45,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func showAboutViewController() {
         let aboutViewController = UIViewController.init(nibName: "AboutViewController", bundle: nil)
         self.navigationController?.pushViewController(aboutViewController, animated: true)
+    }
+    
+    func showFeedbackViewController() {
+        let feedbackViewController = UMFeedback.feedbackModalViewController()
+        self.navigationController?.pushViewController(feedbackViewController, animated: true)
     }
     
     //MARK: - IBAction
@@ -71,13 +78,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             print("0")
             
         case 1:
-            print("1")
-            authenticateLocalUser()
-            
-        case 2:
             print("2")
+            showFeedbackViewController()
         
-        case 3:
+        case 2:
             print("3")
             showAboutViewController()
             

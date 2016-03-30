@@ -12,6 +12,9 @@ import GameKit
 let LeaderBoardID: String  = "SnakeGameRank001"
 let SnakeBlobSize: CGFloat = 20.0
 let SnakeInitLength: Int   = 4
+let BorderColor: UIColor = UIColor.whiteColor()
+let SnakeColor: UIColor = UIColor(red: 65.0/255, green: 105.0/255, blue: 225.0/255, alpha: 1)
+let FoodColor: UIColor = UIColor.orangeColor()
 
 enum GameState {
     case GameIsReady
@@ -19,20 +22,30 @@ enum GameState {
     case GameIsPaused
 }
 
-class RootViewController: UIViewController, GameBoardDelegate
+class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDelegate, GKGameCenterControllerDelegate
   {
-    var totalScore: Int = 0
+    var highestScore: Int64 = 0
+    var totalScore: Int64 = 0
     var leftGameBoard: GameBoard?
     var rightGameBoard: GameBoard?
     var gameCenterController: GKGameCenterViewController?
+    var gameControlView: GameControlView?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gameControlView = NSBundle.mainBundle().loadNibNamed("GameControlView", owner: nil, options: nil)[0] as? GameControlView
+        gameControlView?.delegate = self
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         edgesForExtendedLayout = UIRectEdge.None
         title = "简易贪吃蛇"
         configureNavigationItem()
+        
+        if NSUserDefaults.standardUserDefaults().valueForKey("HighestScore") != nil {
+            highestScore = Int64(NSUserDefaults.standardUserDefaults().integerForKey("HighestScore"))
+        }
     }
     
     func drawGameBoards() {
@@ -43,29 +56,37 @@ class RootViewController: UIViewController, GameBoardDelegate
         let width: CGFloat = UIScreen.mainScreen().bounds.width
         // 竖屏:44+20
         // 横屏:32+20
-        let extraHeight: CGFloat = 32 + 20
+        let extraHeight: CGFloat = 0 // 32 + 20
         let height: CGFloat = UIScreen.mainScreen().bounds.height - extraHeight
         
         leftGameBoard = GameBoard(frame: CGRectMake(0, 0, width/2, height))
         leftGameBoard?.backgroundColor = UIColor.whiteColor()
-        leftGameBoard?.SnakeColor = UIColor.greenColor()
+        leftGameBoard?.SnakeColor = SnakeColor
         leftGameBoard?.initGameBord()
         leftGameBoard?.delegate = self
         view.addSubview(self.leftGameBoard!);
         
         rightGameBoard = GameBoard(frame: CGRectMake(width/2, 0, width/2, height))
         rightGameBoard?.backgroundColor = UIColor.whiteColor()
-        rightGameBoard?.SnakeColor = UIColor.redColor()
+        rightGameBoard?.SnakeColor = SnakeColor
         rightGameBoard?.initGameBord()
         rightGameBoard?.delegate = self
         view.addSubview(self.rightGameBoard!);
+        
+        self.view.bringSubviewToFront(gameControlView!)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
         print("width=\(self.view.frame.size.width)")
         print("height=\(self.view.frame.size.height)")
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
         drawGameBoards();
+        
+        self.view.addSubview(gameControlView!)
+        gameControlView?.setHighestScore(highestScore)
+        gameControlView?.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -98,6 +119,7 @@ class RootViewController: UIViewController, GameBoardDelegate
         let startButton = self.navigationItem.rightBarButtonItems![1]
         startButton.title = "开始"
         navigationItem.leftBarButtonItem?.title = "得分：0"
+        totalScore = 0
         
         leftGameBoard?.resetGame()
         rightGameBoard?.resetGame()
@@ -124,6 +146,28 @@ class RootViewController: UIViewController, GameBoardDelegate
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    // MARK: - GameControlViewDelegate
+    func gameControlViewDidClickedStartGameButton() {
+        self.leftGameBoard?.startGame()
+        self.rightGameBoard?.startGame()
+    }
+    
+    func gameControlViewDidClickedLeaderBoardButton() {
+        let localPlayer = GKLocalPlayer.localPlayer()
+        if  localPlayer.authenticated {
+            showLeaderBoard()
+        } else {
+            authenticateLocalUserWithSucess({ () -> Void? in
+                self.showLeaderBoard()
+            })
+        }
+    }
+    
+    func gameControlViewDidClickedSettingButton() {
+        let controller = SettingViewController(nibName:"SettingViewController", bundle:nil)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     // MARK: - GameBoardDelegate
     func gameScoreChanged(score: Int) {
         totalScore += score;
@@ -138,7 +182,17 @@ class RootViewController: UIViewController, GameBoardDelegate
         authenticateLocalUserWithSucess { () -> Void? in
             self.reportScore()
         }
-        showAlertView()
+        
+        resetGame()
+        if  totalScore > highestScore {
+            highestScore = totalScore
+            NSUserDefaults.standardUserDefaults().setInteger(Int(highestScore), forKey: "HighestScore")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+        
+        gameControlView?.setHighestScore(highestScore)
+        gameControlView?.setCurrentScore(totalScore)
+        gameControlView?.show()
     }
     
     // MARK: - LeaderBoard
@@ -164,10 +218,44 @@ class RootViewController: UIViewController, GameBoardDelegate
         }
     }
     
+    func showLeaderBoard() {
+        let gameCenterController = GKGameCenterViewController()
+        gameCenterController.gameCenterDelegate = self
+        gameCenterController.viewState = GKGameCenterViewControllerState.Default
+        gameCenterController.leaderboardTimeScope = GKLeaderboardTimeScope.Today
+        gameCenterController.leaderboardIdentifier = LeaderBoardID
+        self.presentViewController(gameCenterController, animated: true, completion: nil)
+    }
+    
+    func authenticateLocalUser() {
+        let localPlayer = GKLocalPlayer.localPlayer()
+        if  localPlayer.authenticated {
+            showLeaderBoard()
+        }
+        
+        localPlayer.authenticateHandler = {(viewController: UIViewController?, error: NSError?) -> Void in
+            if  viewController == nil {
+                if localPlayer.authenticated {
+                    print("授权成功")
+                } else {
+                    print("授权失败\(error)");
+                }
+            } else {
+                self.presentViewController(viewController!, animated: true
+                    , completion: nil)
+            }
+        }
+    }
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+        print("点击完成了")
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     // 提交得分
     func reportScore() {
         let score: GKScore = GKScore(leaderboardIdentifier: LeaderBoardID)
-        score.value = 1000
+        score.value = totalScore
         GKScore.reportScores([score]) { (error: NSError?) -> Void in
             if  error == nil {
                 print("提交成功")
