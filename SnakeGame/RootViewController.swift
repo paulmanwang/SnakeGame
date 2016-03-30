@@ -40,7 +40,7 @@ class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDe
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         edgesForExtendedLayout = UIRectEdge.None
-        title = "简易贪吃蛇"
+        title = NSLocalizedString("Easy Snake Game", comment: "")
         configureNavigationItem()
         
         if NSUserDefaults.standardUserDefaults().valueForKey("HighestScore") != nil {
@@ -262,27 +262,6 @@ class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDe
             } else {
                 print("提交失败")
             }
-        }
-    }
-    
-    // MARK: - AlertView
-    func showAlertView() {
-        let alertView = UIAlertView()
-        alertView.title = NSLocalizedString("Nice Tips", comment:"")
-  //"温馨提示"
-        alertView.message = "好棒，您当前游戏得分为1000，赶紧分享给小伙伴吧"
-        alertView.addButtonWithTitle("取消")
-        alertView.addButtonWithTitle("分享")
-        alertView.cancelButtonIndex=0
-        alertView.delegate=self;
-        alertView.show()
-    }
-    
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if buttonIndex == 0 {
-            resetGame()
-        } else {
-            share()
         }
     }
 }

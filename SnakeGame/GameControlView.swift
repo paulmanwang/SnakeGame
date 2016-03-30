@@ -24,6 +24,9 @@ class GameControlView: UIView {
     @IBOutlet weak var leaderBoardButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
     
+    @IBOutlet weak var highestScoreTipsLabel: UILabel!
+    @IBOutlet weak var currentScoreTipsLabel: UILabel!
+    
     var delegate: GameControlViewDelegate?
     
     override func awakeFromNib() {
@@ -31,6 +34,13 @@ class GameControlView: UIView {
         startGameButton.layer.cornerRadius = 5
         leaderBoardButton.layer.cornerRadius = 5
         settingButton.layer.cornerRadius = 5
+        
+        startGameButton.setTitle(NSLocalizedString("Play", comment:""), forState: UIControlState.Normal)
+        leaderBoardButton.setTitle(NSLocalizedString("Leader Board", comment:""), forState: UIControlState.Normal)
+        settingButton.setTitle(NSLocalizedString("Settings", comment:""), forState: UIControlState.Normal)
+        
+        currentScoreTipsLabel.text = NSLocalizedString("Your Score", comment:"")
+        highestScoreTipsLabel.text = NSLocalizedString("Highest Score", comment:"")
     }
 
     func dismissWithBlock(block:() -> Void) {

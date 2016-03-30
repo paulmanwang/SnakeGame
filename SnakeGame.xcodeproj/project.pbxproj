@@ -29,6 +29,8 @@
 		922FE1AD1CA30851008BD90B /* UMSnsAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 922FE1A11CA30851008BD90B /* UMSnsAccountViewController.xib */; };
 		922FE1AE1CA30851008BD90B /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 922FE1A21CA30851008BD90B /* UMSShareListController.xib */; };
 		922FE1AF1CA30851008BD90B /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 922FE1A31CA30851008BD90B /* UMSocialSDKResourcesNew.bundle */; };
+		9262BDAE1CABBB0A0028E437 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9262BDB01CABBB0A0028E437 /* Localizable.strings */; };
+		9262BDB61CABD8670028E437 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9262BDB81CABD8670028E437 /* InfoPlist.strings */; };
 		9263378D1CAAB68300E1CD84 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9263378B1CAAB68300E1CD84 /* AboutViewController.swift */; };
 		9263378E1CAAB68300E1CD84 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9263378C1CAAB68300E1CD84 /* AboutViewController.xib */; };
 		927EB07F1CAADE2E002D4208 /* UMFeedbackLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 927EB0561CAADE2E002D4208 /* UMFeedbackLocalizable.strings */; };
@@ -117,6 +119,10 @@
 		922FE1A21CA30851008BD90B /* UMSShareListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSShareListController.xib; sourceTree = "<group>"; };
 		922FE1A31CA30851008BD90B /* UMSocialSDKResourcesNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResourcesNew.bundle; sourceTree = "<group>"; };
 		922FE1A41CA30851008BD90B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UMSocialLocalizable.strings"; sourceTree = "<group>"; };
+		9262BDAF1CABBB0A0028E437 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9262BDB11CABBB0C0028E437 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9262BDB71CABD8670028E437 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9262BDB91CABD8690028E437 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		9263378B1CAAB68300E1CD84 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		9263378C1CAAB68300E1CD84 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		927EB0571CAADE2E002D4208 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/UMFeedbackLocalizable.strings; sourceTree = "<group>"; };
@@ -218,6 +224,8 @@
 				922FE12B1CA301FB008BD90B /* SnakeGame-Bridging-Header.h */,
 				8CE79C181BD8781700F9D2C1 /* AppGlobal */,
 				8CE79C111BD8779200F9D2C1 /* Resource */,
+				9262BDB01CABBB0A0028E437 /* Localizable.strings */,
+				9262BDB81CABD8670028E437 /* InfoPlist.strings */,
 			);
 			path = SnakeGame;
 			sourceTree = "<group>";
@@ -505,6 +513,7 @@
 				927EB0841CAADE2E002D4208 /* save@2x.png in Resources */,
 				927EB0891CAADE2E002D4208 /* umeng_add_photo@2x.png in Resources */,
 				927EB08B1CAADE2E002D4208 /* umeng_fb_audio_dialog_content@2x.png in Resources */,
+				9262BDAE1CABBB0A0028E437 /* Localizable.strings in Resources */,
 				8CE79BDA1BD485B400F9D2C1 /* Assets.xcassets in Resources */,
 				927EB08E1CAADE2E002D4208 /* umeng_fb_audio_play_03@2x.png in Resources */,
 				922FE1AF1CA30851008BD90B /* UMSocialSDKResourcesNew.bundle in Resources */,
@@ -522,6 +531,7 @@
 				927EB0811CAADE2E002D4208 /* bubble_min@2x.png in Resources */,
 				927EB0871CAADE2E002D4208 /* ToolViewInputVoice@2x.png in Resources */,
 				8CE79C391BDA305F00F9D2C1 /* SettingViewController.xib in Resources */,
+				9262BDB61CABD8670028E437 /* InfoPlist.strings in Resources */,
 				922FE1AC1CA30851008BD90B /* UMSLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,6 +613,24 @@
 				922FE1A41CA30851008BD90B /* zh-Hans */,
 			);
 			name = UMSocialLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		9262BDB01CABBB0A0028E437 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9262BDAF1CABBB0A0028E437 /* en */,
+				9262BDB11CABBB0C0028E437 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		9262BDB81CABD8670028E437 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9262BDB71CABD8670028E437 /* en */,
+				9262BDB91CABD8690028E437 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		927EB0561CAADE2E002D4208 /* UMFeedbackLocalizable.strings */ = {

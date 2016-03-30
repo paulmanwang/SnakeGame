@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  SnakeGame
+
+  Created by lichunwang on 16/3/30.
+  Copyright © 2016年 thunder. All rights reserved.
+*/
+
+// 标题
+"Easy Snake Game" = "简易贪吃蛇";
+
+// 游戏控制界面
+"Play" = "开始游戏";
+"Leader Board" = "排行榜";
+"Settings" = "设置";
+"Your Score" = "本次得分";
+"Highest Score" = "最高得分";
+
+// 设置界面
+"Game difficulty" = "游戏难度";
+"Feedback" = "意见反馈";
+"About" = "关于";
+"Done" = "完成";
+
+// 游戏难度
+"Low Difficulty" = "低等难度";
+"Middle Difficulty" = "中等难度";
+"High Difficulty" = "高等难度";

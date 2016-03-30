@@ -14,15 +14,29 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var finishButton: UIButton!
     
     // MARK: - Property
-    let tableViewDatasources = ["游戏难度", "意见反馈", "关于"]
-    let pickerViewDatasources = ["低等难度", "中等难度", "高等难度"]
+    let gameDifficulty = NSLocalizedString("Game Difficulty", comment:"")
+    let feedback = NSLocalizedString("Feedback", comment:"")
+    let about = NSLocalizedString("About", comment:"")
+    var tableViewDatasources: [String]?
+    
+    let lowDiff = NSLocalizedString("Low Difficulty", comment:"")
+    let midDiff = NSLocalizedString("Middle Difficulty", comment:"")
+    let highDiff = NSLocalizedString("High Difficulty", comment:"")
+    var pickerViewDatasources: [String]?
 
     // Mark: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "设置"
+        
+        tableViewDatasources = [gameDifficulty, feedback, about]
+        pickerViewDatasources = [lowDiff, midDiff, highDiff]
+        
+        self.title = NSLocalizedString("Settings", comment:"")
+        finishButton.setTitle(NSLocalizedString("Done", comment:""), forState: UIControlState.Normal)
+        
         tableView.tableFooterView = UIView()
         containerView.hidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -59,12 +73,12 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableViewDatasources.count
+        return (tableViewDatasources?.count)!
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell()
-        cell.textLabel?.text = tableViewDatasources[indexPath.row]
+        cell.textLabel?.text = tableViewDatasources?[indexPath.row]
         return cell
     }
     
@@ -96,12 +110,12 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerViewDatasources.count
+        return (pickerViewDatasources?.count)!
     }
     
     // MARK: - UIPickerViewDelegate
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerViewDatasources[row]
+        return pickerViewDatasources?[row]
     }
     
     // MARK: - LeaderBoard

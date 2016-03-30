@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  SnakeGame
+
+  Created by lichunwang on 16/3/30.
+  Copyright © 2016年 thunder. All rights reserved.
+*/
+
+// 标题
+"Easy Snake Game" = "Easy Snake Game";
+
+// 游戏控制界面
+"Play" = "Play";
+"Leader Board" = "Leader Board";
+"Settings" = "Settings";
+"Your Score" = "Your Score";
+"Highest Score" = "Highest Score";
+
+// 设置界面
+"Game Difficulty" = "Game Difficulty";
+"Feedback" = "Feedback";
+"About" = "About";
+"Done" = "Done";
+
+// 游戏难度
+"Low Difficulty" = "Low Difficulty";
+"Middle Difficulty" = "Middle Difficulty";
+"High Difficulty" = "High Difficulty";

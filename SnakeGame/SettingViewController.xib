@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController" customModule="SnakeGame" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="XXx-hL-MI1" id="VdK-me-ZwP"/>
+                <outlet property="finishButton" destination="Ksr-fg-HMu" id="a65-4G-FZq"/>
                 <outlet property="pickerView" destination="7p6-4E-mpS" id="fNh-uQ-1Lm"/>
                 <outlet property="tableView" destination="4uh-X3-hfa" id="vaI-N8-I6V"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -42,6 +43,7 @@
                                 <constraint firstAttribute="width" constant="46" id="2gQ-oh-2iA"/>
                                 <constraint firstAttribute="height" constant="30" id="Izg-Wc-mUn"/>
                             </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <state key="normal" title="完成"/>
                             <connections>
                                 <action selector="onFinishButtonClicked:" destination="-1" eventType="touchUpInside" id="VgA-ax-Gj2"/>
