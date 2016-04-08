@@ -13,6 +13,7 @@
 // 游戏控制界面
 "Play" = "开始游戏";
 "Leader Board" = "排行榜";
+"Share" = "立即分享";
 "Settings" = "设置";
 "Your Score" = "本次得分";
 "Highest Score" = "最高得分";
@@ -20,6 +21,7 @@
 // 设置界面
 "Game Difficulty" = "游戏难度";
 "Feedback" = "意见反馈";
+"Score Record" = "得分记录";
 "About" = "关于";
 "Done" = "完成";
 

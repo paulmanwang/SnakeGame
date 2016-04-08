@@ -17,6 +17,13 @@
 		8CE79C201BD9E27F00F9D2C1 /* SGNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C1F1BD9E27F00F9D2C1 /* SGNavigationController.swift */; };
 		8CE79C381BDA305F00F9D2C1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE79C361BDA305F00F9D2C1 /* SettingViewController.swift */; };
 		8CE79C391BDA305F00F9D2C1 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE79C371BDA305F00F9D2C1 /* SettingViewController.xib */; };
+		920B7B8D1CB3E5AE005AA5DF /* JSPatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 920B7B8C1CB3E5AE005AA5DF /* JSPatch.framework */; };
+		920B7B8F1CB3E615005AA5DF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 920B7B8E1CB3E615005AA5DF /* libz.tbd */; };
+		920B7B911CB3E659005AA5DF /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 920B7B901CB3E659005AA5DF /* JavaScriptCore.framework */; };
+		920B7B991CB4C454005AA5DF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 920B7B971CB4C453005AA5DF /* Fabric.framework */; };
+		920B7B9A1CB4C454005AA5DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 920B7B981CB4C454005AA5DF /* Crashlytics.framework */; };
+		920B7BC51CB519E7005AA5DF /* SGScore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 920B7BC31CB519E7005AA5DF /* SGScore.xcdatamodeld */; };
+		920B7BD31CB51BF5005AA5DF /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920B7BD21CB51BF5005AA5DF /* ScoreManager.swift */; };
 		922FE1881CA30776008BD90B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 922FE1871CA30776008BD90B /* SystemConfiguration.framework */; };
 		922FE1A51CA30851008BD90B /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 922FE18B1CA30851008BD90B /* UMSocialLocalizable.strings */; };
 		922FE1A61CA30851008BD90B /* libUMSocial_Sdk_5.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 922FE1991CA30851008BD90B /* libUMSocial_Sdk_5.0.1.a */; };
@@ -60,6 +67,17 @@
 		927EB0971CAADE2E002D4208 /* UMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 927EB07D1CAADE2E002D4208 /* UMTextView.m */; };
 		927EB0991CAB734E002D4208 /* GameControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927EB0981CAB734E002D4208 /* GameControlView.swift */; };
 		927EB09B1CAB7375002D4208 /* GameControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927EB09A1CAB7375002D4208 /* GameControlView.xib */; };
+		92B100D41CB61D000015B63C /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B100CE1CB61D000015B63C /* libSocialWechat.a */; };
+		92B100D51CB61D000015B63C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B100CF1CB61D000015B63C /* libWeChatSDK.a */; };
+		92B100D71CB630CA0015B63C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B100D61CB630CA0015B63C /* Security.framework */; };
+		92B100D91CB631050015B63C /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B100D81CB631050015B63C /* libiconv.tbd */; };
+		92B100DB1CB631F30015B63C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B100DA1CB631F30015B63C /* libsqlite3.tbd */; };
+		92B100DD1CB632090015B63C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B100DC1CB632090015B63C /* CoreTelephony.framework */; };
+		92B100DF1CB6321A0015B63C /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B100DE1CB6321A0015B63C /* libstdc++.tbd */; };
+		92DF77AB1CB7A26600619960 /* SGScore+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DF77A91CB7A26600619960 /* SGScore+CoreDataProperties.swift */; };
+		92DF77AC1CB7A26600619960 /* SGScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DF77AA1CB7A26600619960 /* SGScore.swift */; };
+		92DF77AF1CB7A8CC00619960 /* ScoreHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DF77AD1CB7A8CC00619960 /* ScoreHistoryViewController.swift */; };
+		92DF77B01CB7A8CC00619960 /* ScoreHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DF77AE1CB7A8CC00619960 /* ScoreHistoryViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +112,13 @@
 		8CE79C1F1BD9E27F00F9D2C1 /* SGNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGNavigationController.swift; sourceTree = "<group>"; };
 		8CE79C361BDA305F00F9D2C1 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8CE79C371BDA305F00F9D2C1 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		920B7B8C1CB3E5AE005AA5DF /* JSPatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatch.framework; sourceTree = "<group>"; };
+		920B7B8E1CB3E615005AA5DF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		920B7B901CB3E659005AA5DF /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/PrivateFrameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		920B7B971CB4C453005AA5DF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		920B7B981CB4C454005AA5DF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		920B7BC41CB519E7005AA5DF /* SGScore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SGScore.xcdatamodel; sourceTree = "<group>"; };
+		920B7BD21CB51BF5005AA5DF /* ScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		922FE12B1CA301FB008BD90B /* SnakeGame-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnakeGame-Bridging-Header.h"; sourceTree = "<group>"; };
 		922FE1871CA30776008BD90B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		922FE18C1CA30851008BD90B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
@@ -164,6 +189,21 @@
 		927EB07E1CAADE2E002D4208 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UMFeedbackLocalizable.strings"; sourceTree = "<group>"; };
 		927EB0981CAB734E002D4208 /* GameControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameControlView.swift; sourceTree = "<group>"; };
 		927EB09A1CAB7375002D4208 /* GameControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameControlView.xib; sourceTree = "<group>"; };
+		92B100CE1CB61D000015B63C /* libSocialWechat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWechat.a; sourceTree = "<group>"; };
+		92B100CF1CB61D000015B63C /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		92B100D01CB61D000015B63C /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
+		92B100D11CB61D000015B63C /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		92B100D21CB61D000015B63C /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		92B100D31CB61D000015B63C /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		92B100D61CB630CA0015B63C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		92B100D81CB631050015B63C /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		92B100DA1CB631F30015B63C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		92B100DC1CB632090015B63C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		92B100DE1CB6321A0015B63C /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		92DF77A91CB7A26600619960 /* SGScore+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SGScore+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		92DF77AA1CB7A26600619960 /* SGScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGScore.swift; sourceTree = "<group>"; };
+		92DF77AD1CB7A8CC00619960 /* ScoreHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreHistoryViewController.swift; sourceTree = "<group>"; };
+		92DF77AE1CB7A8CC00619960 /* ScoreHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreHistoryViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +211,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920B7B8F1CB3E615005AA5DF /* libz.tbd in Frameworks */,
+				92B100DF1CB6321A0015B63C /* libstdc++.tbd in Frameworks */,
+				92B100DD1CB632090015B63C /* CoreTelephony.framework in Frameworks */,
+				92B100DB1CB631F30015B63C /* libsqlite3.tbd in Frameworks */,
+				92B100D91CB631050015B63C /* libiconv.tbd in Frameworks */,
+				92B100D71CB630CA0015B63C /* Security.framework in Frameworks */,
+				920B7B911CB3E659005AA5DF /* JavaScriptCore.framework in Frameworks */,
+				920B7B9A1CB4C454005AA5DF /* Crashlytics.framework in Frameworks */,
+				920B7B8D1CB3E5AE005AA5DF /* JSPatch.framework in Frameworks */,
+				920B7B991CB4C454005AA5DF /* Fabric.framework in Frameworks */,
+				92B100D51CB61D000015B63C /* libWeChatSDK.a in Frameworks */,
 				927EB0801CAADE2E002D4208 /* libUMFeedback.a in Frameworks */,
+				92B100D41CB61D000015B63C /* libSocialWechat.a in Frameworks */,
 				922FE1A61CA30851008BD90B /* libUMSocial_Sdk_5.0.1.a in Frameworks */,
 				927EB0911CAADE2E002D4208 /* libUMOpus.a in Frameworks */,
 				922FE1881CA30776008BD90B /* SystemConfiguration.framework in Frameworks */,
@@ -218,10 +270,13 @@
 			isa = PBXGroup;
 			children = (
 				9262BDBB1CABE5140028E437 /* RootView */,
+				920B7BC21CB519CB005AA5DF /* CoreData */,
 				8CE79C311BDA27C200F9D2C1 /* Setting */,
 				8CE79C2F1BDA27A900F9D2C1 /* GameLogic */,
 				8CE79C181BD8781700F9D2C1 /* AppGlobal */,
+				9262BDBC1CABE5360028E437 /* Localizable */,
 				8CE79C111BD8779200F9D2C1 /* Resource */,
+				8CE79BDE1BD485B400F9D2C1 /* Info.plist */,
 			);
 			path = SnakeGame;
 			sourceTree = "<group>";
@@ -237,9 +292,7 @@
 		8CE79C181BD8781700F9D2C1 /* AppGlobal */ = {
 			isa = PBXGroup;
 			children = (
-				9262BDBC1CABE5360028E437 /* Localizable */,
 				922FE12B1CA301FB008BD90B /* SnakeGame-Bridging-Header.h */,
-				8CE79BDE1BD485B400F9D2C1 /* Info.plist */,
 				8CE79BD21BD485B400F9D2C1 /* AppDelegate.swift */,
 				8CE79C031BD50DCD00F9D2C1 /* LaunchScreen.xib */,
 			);
@@ -263,13 +316,37 @@
 				8CE79C371BDA305F00F9D2C1 /* SettingViewController.xib */,
 				9263378B1CAAB68300E1CD84 /* AboutViewController.swift */,
 				9263378C1CAAB68300E1CD84 /* AboutViewController.xib */,
+				92DF77AD1CB7A8CC00619960 /* ScoreHistoryViewController.swift */,
+				92DF77AE1CB7A8CC00619960 /* ScoreHistoryViewController.xib */,
 			);
 			name = Setting;
+			sourceTree = "<group>";
+		};
+		920B7BC21CB519CB005AA5DF /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				920B7BC31CB519E7005AA5DF /* SGScore.xcdatamodeld */,
+				920B7BD21CB51BF5005AA5DF /* ScoreManager.swift */,
+				92DF77A91CB7A26600619960 /* SGScore+CoreDataProperties.swift */,
+				92DF77AA1CB7A26600619960 /* SGScore.swift */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		922FE1891CA307C3008BD90B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92B100DE1CB6321A0015B63C /* libstdc++.tbd */,
+				92B100DC1CB632090015B63C /* CoreTelephony.framework */,
+				92B100DA1CB631F30015B63C /* libsqlite3.tbd */,
+				92B100D81CB631050015B63C /* libiconv.tbd */,
+				92B100D61CB630CA0015B63C /* Security.framework */,
+				92B100CD1CB61D000015B63C /* Wechat */,
+				920B7B971CB4C453005AA5DF /* Fabric.framework */,
+				920B7B981CB4C454005AA5DF /* Crashlytics.framework */,
+				920B7B901CB3E659005AA5DF /* JavaScriptCore.framework */,
+				920B7B8E1CB3E615005AA5DF /* libz.tbd */,
+				920B7B8C1CB3E5AE005AA5DF /* JSPatch.framework */,
 				927EB0551CAADE2E002D4208 /* UMengFeedback_SDK */,
 				922FE18A1CA30851008BD90B /* UMSocial_Sdk_5.0.1 */,
 				922FE1871CA30776008BD90B /* SystemConfiguration.framework */,
@@ -411,6 +488,19 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		92B100CD1CB61D000015B63C /* Wechat */ = {
+			isa = PBXGroup;
+			children = (
+				92B100CE1CB61D000015B63C /* libSocialWechat.a */,
+				92B100CF1CB61D000015B63C /* libWeChatSDK.a */,
+				92B100D01CB61D000015B63C /* UMSocialWechatHandler.h */,
+				92B100D11CB61D000015B63C /* WechatAuthSDK.h */,
+				92B100D21CB61D000015B63C /* WXApi.h */,
+				92B100D31CB61D000015B63C /* WXApiObject.h */,
+			);
+			path = Wechat;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -421,6 +511,7 @@
 				8CE79BCB1BD485B400F9D2C1 /* Sources */,
 				8CE79BCC1BD485B400F9D2C1 /* Frameworks */,
 				8CE79BCD1BD485B400F9D2C1 /* Resources */,
+				920B7B961CB4C3FC005AA5DF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -542,6 +633,7 @@
 				922FE1A51CA30851008BD90B /* UMSocialLocalizable.strings in Resources */,
 				927EB07F1CAADE2E002D4208 /* UMFeedbackLocalizable.strings in Resources */,
 				927EB0881CAADE2E002D4208 /* ToolViewInputVoiceHL@2x.png in Resources */,
+				92DF77B01CB7A8CC00619960 /* ScoreHistoryViewController.xib in Resources */,
 				927EB0851CAADE2E002D4208 /* ToolViewInputText@2x.png in Resources */,
 				8CE79C041BD50DCD00F9D2C1 /* LaunchScreen.xib in Resources */,
 				927EB0811CAADE2E002D4208 /* bubble_min@2x.png in Resources */,
@@ -568,26 +660,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		920B7B961CB4C3FC005AA5DF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run f64f0fbfa9da1cba6bc8ee4c1a9231469b8aad25 7742e139d56e16f37e9431b68b09d1d3f6084030e78e31163d7d34159839003e";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8CE79BCB1BD485B400F9D2C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8CE79C1C1BD87BC600F9D2C1 /* GameBoard.swift in Sources */,
+				920B7BC51CB519E7005AA5DF /* SGScore.xcdatamodeld in Sources */,
+				92DF77AB1CB7A26600619960 /* SGScore+CoreDataProperties.swift in Sources */,
 				927EB0931CAADE2E002D4208 /* UMChatToolBar.m in Sources */,
 				927EB0901CAADE2E002D4208 /* UMFeedbackViewController.m in Sources */,
 				8CE79C071BD50EC800F9D2C1 /* RootViewController.swift in Sources */,
 				8CE79C381BDA305F00F9D2C1 /* SettingViewController.swift in Sources */,
 				8CE79C1A1BD878A000F9D2C1 /* Food.swift in Sources */,
 				927EB0991CAB734E002D4208 /* GameControlView.swift in Sources */,
+				92DF77AF1CB7A8CC00619960 /* ScoreHistoryViewController.swift in Sources */,
 				8CE79BD31BD485B400F9D2C1 /* AppDelegate.swift in Sources */,
 				8CE79C101BD6688800F9D2C1 /* Snake.swift in Sources */,
 				927EB0941CAADE2E002D4208 /* UMFullScreenPhotoView.m in Sources */,
+				920B7BD31CB51BF5005AA5DF /* ScoreManager.swift in Sources */,
 				9263378D1CAAB68300E1CD84 /* AboutViewController.swift in Sources */,
 				8CE79C201BD9E27F00F9D2C1 /* SGNavigationController.swift in Sources */,
 				927EB0971CAADE2E002D4208 /* UMTextView.m in Sources */,
 				927EB0921CAADE2E002D4208 /* UMChatTableViewCell.m in Sources */,
 				927EB0951CAADE2E002D4208 /* UMPostTableViewCell.m in Sources */,
+				92DF77AC1CB7A26600619960 /* SGScore.swift in Sources */,
 				927EB0961CAADE2E002D4208 /* UMRadialView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -752,6 +865,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/SnakeGame/UMSocial_Sdk_5.0.1/Header";
 				INFOPLIST_FILE = SnakeGame/Info.plist;
@@ -764,6 +882,7 @@
 					"$(PROJECT_DIR)/SnakeGame/UMFeedback_iOS_2.3.4/UMessage_Sdk_1.1.0",
 					"$(PROJECT_DIR)/SnakeGame/UMengFeedback_SDK",
 					"$(PROJECT_DIR)/SnakeGame/UMengFeedback_SDK/UMOpus",
+					"$(PROJECT_DIR)/Wechat",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.springcome.SnakeGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -781,6 +900,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Lichun Ｗang (7Q7SB93LSH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/SnakeGame/UMSocial_Sdk_5.0.1/Header";
 				INFOPLIST_FILE = SnakeGame/Info.plist;
@@ -793,6 +917,7 @@
 					"$(PROJECT_DIR)/SnakeGame/UMFeedback_iOS_2.3.4/UMessage_Sdk_1.1.0",
 					"$(PROJECT_DIR)/SnakeGame/UMengFeedback_SDK",
 					"$(PROJECT_DIR)/SnakeGame/UMengFeedback_SDK/UMOpus",
+					"$(PROJECT_DIR)/Wechat",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.springcome.SnakeGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -889,6 +1014,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		920B7BC31CB519E7005AA5DF /* SGScore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				920B7BC41CB519E7005AA5DF /* SGScore.xcdatamodel */,
+			);
+			currentVersion = 920B7BC41CB519E7005AA5DF /* SGScore.xcdatamodel */;
+			path = SGScore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8CE79BC71BD485B400F9D2C1 /* Project object */;
 }

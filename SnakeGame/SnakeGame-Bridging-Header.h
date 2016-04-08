@@ -4,3 +4,5 @@
 
 #import "UMSocial.h"
 #import "UMFeedback.h"
+#import "JSPatch/JSPatch.h"
+#import "UMSocialWechatHandler.h"

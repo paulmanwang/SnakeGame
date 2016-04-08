@@ -13,6 +13,7 @@
 // 游戏控制界面
 "Play" = "Play";
 "Leader Board" = "Leader Board";
+"Share" = "Share";
 "Settings" = "Settings";
 "Your Score" = "Your Score";
 "Highest Score" = "Highest Score";
@@ -20,6 +21,7 @@
 // 设置界面
 "Game Difficulty" = "Game Difficulty";
 "Feedback" = "Feedback";
+"Score Record" = "Score Record";
 "About" = "About";
 "Done" = "Done";
 

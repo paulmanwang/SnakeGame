@@ -22,7 +22,7 @@ enum GameState {
     case GameIsPaused
 }
 
-class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDelegate, GKGameCenterControllerDelegate
+class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDelegate, GKGameCenterControllerDelegate, UMSocialUIDelegate
   {
     var highestScore: Int64 = 0
     var totalScore: Int64 = 0
@@ -39,7 +39,6 @@ class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDe
         gameControlView = NSBundle.mainBundle().loadNibNamed("GameControlView", owner: nil, options: nil)[0] as? GameControlView
         gameControlView?.delegate = self
         
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
         edgesForExtendedLayout = UIRectEdge.None
         title = NSLocalizedString("Easy Snake Game", comment: "")
         configureNavigationItem()
@@ -112,10 +111,6 @@ class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDe
         navigationItem.rightBarButtonItems = [settingButton, startButton]
     }
     
-    func share() {
-        UMSocialSnsService.presentSnsIconSheetView(self, appKey:"56f2ad62e0f55a0548002657", shareText:"我在测试", shareImage:nil, shareToSnsNames:[UMShareToSina, UMShareToRenren, UMShareToDouban, UMShareToWechatTimeline, UMShareToWechatSession, UMShareToQzone], delegate:nil)
-    }
-    
     func resetGame() {
         let startButton = self.navigationItem.rightBarButtonItems![1]
         startButton.title = "开始"
@@ -175,6 +170,10 @@ class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDe
         self.presentViewController(settingNavigationController!, animated: true, completion: nil)
     }
     
+    func gameControlViewDidClickedShareButton() {
+        self.share()
+    }
+    
     func OnCloseButtonClicked() {
         self.navigationController!.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -189,7 +188,11 @@ class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDe
     func gameOver() {
         leftGameBoard?.stopTimer()
         rightGameBoard?.stopTimer()
-        // 提交游戏得分
+        
+        // 利用coredata保存本次得分
+        ScoreManager.insertScore(totalScore)
+        
+        // 提交游戏得分至得分榜
         authenticateLocalUserWithSucess { () -> Void? in
             self.reportScore()
         }
@@ -200,7 +203,6 @@ class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDe
             NSUserDefaults.standardUserDefaults().synchronize()
         }
         
-        print("totalScore\(totalScore)")
         gameControlView?.setHighestScore(highestScore)
         gameControlView?.setCurrentScore(totalScore)
         gameControlView?.show()
@@ -281,4 +283,29 @@ class RootViewController: UIViewController, GameBoardDelegate, GameControlViewDe
             }
         }
     }
+    
+    // MARK: - Share
+    
+    func share() {
+        // 设置分享图片
+        let image = UIImage(named: "108x108")
+        // 设置分享文字
+        let content = "我在双龙戏珠游戏中获取了1000分，笨驴你敢来挑战吗"
+        // 设置分享标题
+        UMSocialData.defaultData().extConfig.wechatSessionData.title = "本次战绩"
+        // 设置分享类型，类型包括UMSocialWXMessageTypeImage、UMSocialWXMessageTypeText、UMSocialWXMessageTypeApp
+        UMSocialData.defaultData().extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+        // 不设置type的时候才生效
+        // UMSocialData.defaultData().extConfig.wechatSessionData.url = "http://baidu.com" // 不填写默认跳转到了UMeng首页
+        
+        UMSocialSnsService.presentSnsIconSheetView(self, appKey:"56f2ad62e0f55a0548002657", shareText:content, shareImage:image, shareToSnsNames:[UMShareToSina, UMShareToWechatSession, UMShareToWechatTimeline, UMShareToQzone], delegate:self)
+    }
+    
+    // 如果选择“留在微信”，不会有回调；如果选择“返回双龙戏珠”会有回调。
+    func didFinishGetUMSocialDataInViewController(response: UMSocialResponseEntity!) {
+        if  response.responseCode == UMSResponseCodeSuccess {
+            print("share to sns name is \(response.data)")
+        }
+    }
+    
 }

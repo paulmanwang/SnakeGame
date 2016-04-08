@@ -11,6 +11,7 @@ import UIKit
 protocol GameControlViewDelegate {
     func gameControlViewDidClickedStartGameButton()
     func gameControlViewDidClickedLeaderBoardButton()
+    func gameControlViewDidClickedShareButton()
     func gameControlViewDidClickedSettingButton()
 }
 
@@ -23,6 +24,7 @@ class GameControlView: UIView {
     @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var leaderBoardButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     
     @IBOutlet weak var highestScoreTipsLabel: UILabel!
     @IBOutlet weak var currentScoreTipsLabel: UILabel!
@@ -37,6 +39,7 @@ class GameControlView: UIView {
         
         startGameButton.setTitle(NSLocalizedString("Play", comment:""), forState: UIControlState.Normal)
         leaderBoardButton.setTitle(NSLocalizedString("Leader Board", comment:""), forState: UIControlState.Normal)
+        shareButton.setTitle(NSLocalizedString("Share", comment:""), forState: UIControlState.Normal)
         settingButton.setTitle(NSLocalizedString("Settings", comment:""), forState: UIControlState.Normal)
         
         currentScoreTipsLabel.text = NSLocalizedString("Your Score", comment:"")
@@ -75,6 +78,10 @@ class GameControlView: UIView {
 
     @IBAction func onLeaderBoardButtonClicked(sender: AnyObject) {
         self.delegate?.gameControlViewDidClickedLeaderBoardButton()
+    }
+    
+    @IBAction func onShareButtonClicked(sender: AnyObject) {
+        self.delegate?.gameControlViewDidClickedShareButton()
     }
     
     @IBAction func onSettingButtonClicked(sender: AnyObject) {

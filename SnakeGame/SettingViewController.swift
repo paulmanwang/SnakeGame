@@ -19,6 +19,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Property
     let gameDifficulty = NSLocalizedString("Game Difficulty", comment:"")
     let feedback = NSLocalizedString("Feedback", comment:"")
+    let scoreRecord = NSLocalizedString("Score Record", comment:"")
     let about = NSLocalizedString("About", comment:"")
     var tableViewDatasources: [String]?
     
@@ -31,7 +32,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableViewDatasources = [gameDifficulty, feedback, about]
+        tableViewDatasources = [gameDifficulty, feedback, scoreRecord, about]
         pickerViewDatasources = [lowDiff, midDiff, highDiff]
         
         self.title = NSLocalizedString("Settings", comment:"")
@@ -66,6 +67,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.pushViewController(feedbackViewController, animated: true)
     }
     
+    func showScoreHistoryViewController() {
+        let historyViewController = ScoreHistoryViewController()
+        self.navigationController?.pushViewController(historyViewController, animated: true)
+    }
+    
     //MARK: - IBAction
     @IBAction func onFinishButtonClicked(sender: AnyObject) {
         hidePickerView()
@@ -92,11 +98,14 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             print("0")
             
         case 1:
-            print("2")
+            print("1")
             showFeedbackViewController()
         
         case 2:
-            print("3")
+            print("2")
+            showScoreHistoryViewController()
+            
+        case 3:
             showAboutViewController()
             
         default:
