@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController" customModule="SnakeGame" customModuleProvider="target">
@@ -12,36 +13,57 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ:708848520" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I18-eF-NU1">
-                    <rect key="frame" x="65" y="270" width="191" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="QQ:708848520" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6T3-w2-lKJ">
+                    <rect key="frame" x="145" y="208" width="191" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="191" id="Pjq-R1-9OU"/>
-                        <constraint firstAttribute="height" constant="21" id="zXa-as-FrK"/>
+                        <constraint firstAttribute="width" constant="191" id="Ngw-hp-es0"/>
+                        <constraint firstAttribute="height" constant="21" id="Sej-h5-WA7"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tnr-sI-CUs">
-                    <rect key="frame" x="62" y="129" width="196" height="128"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="v1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I18-eF-NU1">
+                    <rect key="frame" x="145" y="177" width="191" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="191" id="SM1-BC-uC5"/>
+                        <constraint firstAttribute="height" constant="21" id="ZPn-Io-K5m"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="tnr-sI-CUs">
+                    <rect key="frame" x="90" y="59" width="300" height="110"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="196" id="a0S-pF-0Xw"/>
-                        <constraint firstAttribute="height" constant="128" id="h7G-op-0mk"/>
+                        <constraint firstAttribute="height" constant="110" id="guN-kv-YmD"/>
+                        <constraint firstAttribute="width" constant="300" id="tLA-Z1-2gL"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="I18-eF-NU1" firstAttribute="top" secondItem="tnr-sI-CUs" secondAttribute="bottom" constant="13" id="7lF-qw-z15"/>
-                <constraint firstItem="tnr-sI-CUs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="129" id="GVd-7u-F7M"/>
-                <constraint firstItem="tnr-sI-CUs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HbK-fE-VwN"/>
-                <constraint firstItem="I18-eF-NU1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QDc-ol-tA5"/>
+                <constraint firstItem="I18-eF-NU1" firstAttribute="top" secondItem="tnr-sI-CUs" secondAttribute="bottom" constant="10" id="0P3-3c-J9s"/>
+                <constraint firstItem="6T3-w2-lKJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0cz-y2-ewk"/>
+                <constraint firstItem="tnr-sI-CUs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" multiplier="1:5" constant="57" id="2LN-ul-UtV"/>
+                <constraint firstItem="I18-eF-NU1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6Ga-vl-158"/>
+                <constraint firstItem="tnr-sI-CUs" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1:1.4" id="Ffg-k8-uQP"/>
+                <constraint firstItem="tnr-sI-CUs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="djC-8g-j3g"/>
+                <constraint firstItem="6T3-w2-lKJ" firstAttribute="top" secondItem="I18-eF-NU1" secondAttribute="bottom" constant="10" id="sQT-zS-8tr"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="2LN-ul-UtV"/>
+                </mask>
+            </variation>
         </view>
     </objects>
+    <resources>
+        <image name="launch" width="295" height="110"/>
+    </resources>
 </document>

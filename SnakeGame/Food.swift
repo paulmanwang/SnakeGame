@@ -8,13 +8,13 @@
 
 import UIKit
 
-class Food: UIView {
+class Food: UIImageView {
     
     init(parentView:UIView, position: CGPoint)
     {
         let frame: CGRect = CGRectMake(position.x, position.y, SnakeBlobSize, SnakeBlobSize)
         super.init(frame: frame)
-        self.backgroundColor = FoodColor
+        self.image = FoodImage
         parentView.addSubview(self)
     }
 

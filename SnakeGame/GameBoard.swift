@@ -17,7 +17,6 @@ protocol GameBoardDelegate: class
 class GameBoard: UIView {
     weak var delegate: GameBoardDelegate?
     
-    var SnakeColor: UIColor = UIColor.redColor()
     var snake: Snake?
     var timer: NSTimer?
     var food: Food?
@@ -32,7 +31,7 @@ class GameBoard: UIView {
     
     func initGameBord() {
         // 设置背景颜色
-        self.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.8)
+        self.backgroundColor = UIColor.clearColor()
         self.clipsToBounds = true
         
         // 画蛇
@@ -45,7 +44,7 @@ class GameBoard: UIView {
         let horiWidth = (height - maxY) / 2.0
         offsetPoint = CGPointMake(verWidth, horiWidth)
         
-        self.snake = Snake(parentView: self, defaultDirection: Direction.Right, originPoint: offsetPoint!, bodyColor: SnakeColor)
+        self.snake = Snake(parentView: self, defaultDirection: Direction.Right, originPoint: offsetPoint!)
         
         // 绘制边框
         let label1 = UILabel(frame:CGRectMake(0, 0, width, horiWidth))
@@ -60,9 +59,6 @@ class GameBoard: UIView {
         self.addSubview(label2)
         self.addSubview(label3)
         self.addSubview(label4)
-        
-        // 生成实物
-        //makeFood()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -101,10 +97,10 @@ class GameBoard: UIView {
             let width = self.frame.size.width
             let height = self.frame.size.height
             // 生成随机数
-            let maxX: Int = Int(width / SnakeBlobSize)
-            let maxY: Int = Int(height / SnakeBlobSize)
-            let randomX = Int(arc4random()) % maxX
-            let randomY = Int(arc4random()) % maxY
+            let maxX: UInt32 = UInt32(width / SnakeBlobSize)
+            let maxY: UInt32 = UInt32(height / SnakeBlobSize)
+            let randomX = UInt32(arc4random_uniform(maxX))// Int(arc4random()) % maxX
+            let randomY = UInt32(arc4random_uniform(maxY)) // Int(arc4random()) % maxY
             
             let position: CGPoint = CGPointMake((offsetPoint?.x)! + CGFloat(randomX) * SnakeBlobSize, (offsetPoint?.y)!+CGFloat(randomY) * SnakeBlobSize)
             
@@ -194,7 +190,8 @@ class GameBoard: UIView {
     
     func onTimer(timer:NSTimer) {
         let (isGameOver, currentPosition) = (self.snake?.moveWithFood(self.food!))!
-        let score: Int = ((self.snake?.length())! - SnakeInitLength) * 10 // 吃到食物得10分
+        let score: Int = ((self.snake?.length())! - SnakeInitLength) // 吃到食物得10分
+        print("snake length = \((self.snake?.length())!)")
         if self.lastScore != score {
             if self.delegate != nil {
                 self.delegate?.gameScoreChanged(score - self.lastScore)
@@ -221,6 +218,7 @@ class GameBoard: UIView {
     }
     
     func resetGame() {
+        self.lastScore = 0
         self.snake?.resetSnake()
         self.food?.removeFromSuperview()
     }

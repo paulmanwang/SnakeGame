@@ -9,7 +9,7 @@
 import UIKit
 import GameKit
 
-class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GKGameCenterControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
     // MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
@@ -17,9 +17,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var finishButton: UIButton!
     
     // MARK: - Property
-    let gameDifficulty = NSLocalizedString("Game Difficulty", comment:"")
+//    let gameDifficulty = NSLocalizedString("Game Difficulty", comment:"")
     let feedback = NSLocalizedString("Feedback", comment:"")
-    let scoreRecord = NSLocalizedString("Score Record", comment:"")
     let about = NSLocalizedString("About", comment:"")
     var tableViewDatasources: [String]?
     
@@ -32,7 +31,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableViewDatasources = [gameDifficulty, feedback, scoreRecord, about]
+        tableViewDatasources = [feedback, about]
         pickerViewDatasources = [lowDiff, midDiff, highDiff]
         
         self.title = NSLocalizedString("Settings", comment:"")
@@ -93,19 +92,16 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         hidePickerView()
         switch indexPath.row {
-        case 0:
-            showPickerView()
-            print("0")
+//        case 0:
+//            showPickerView()
+//            print("0")
             
-        case 1:
+        case 0:
             print("1")
             showFeedbackViewController()
         
-        case 2:
+        case 1:
             print("2")
-            showScoreHistoryViewController()
-            
-        case 3:
             showAboutViewController()
             
         default:
@@ -125,41 +121,5 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - UIPickerViewDelegate
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerViewDatasources?[row]
-    }
-    
-    // MARK: - LeaderBoard
-    func showLeaderBoard() {
-        let gameCenterController = GKGameCenterViewController()
-        gameCenterController.gameCenterDelegate = self
-        gameCenterController.viewState = GKGameCenterViewControllerState.Default
-        gameCenterController.leaderboardTimeScope = GKLeaderboardTimeScope.Today
-        gameCenterController.leaderboardIdentifier = LeaderBoardID
-        self.presentViewController(gameCenterController, animated: true, completion: nil)
-    }
-    
-    func authenticateLocalUser() {
-        let localPlayer = GKLocalPlayer.localPlayer()
-        if  localPlayer.authenticated {
-            showLeaderBoard()
-        }
-        
-        localPlayer.authenticateHandler = {(viewController: UIViewController?, error: NSError?) -> Void in
-            if  viewController == nil {
-                if localPlayer.authenticated {
-                    print("授权成功")
-                    self.showLeaderBoard()
-                } else {
-                    print("授权失败\(error)");
-                }
-            } else {
-                self.presentViewController(viewController!, animated: true
-                    , completion: nil)
-            }
-        }
-    }
-    
-    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
-        print("点击完成了")
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
