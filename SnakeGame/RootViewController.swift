@@ -15,8 +15,8 @@ let SnakeInitLength: Int   = 4
 
 let GameControllerTextColor = UIColor(red: 253/255, green: 208/255, blue: 0, alpha: 1)
 let ScoreTextColor          = UIColor.redColor()
-let GameBoardColor          = UIColor(red: 0, green: 174/255, blue: 187/255, alpha: 1)
-let BorderColor             = UIColor.lightGrayColor()
+let GameBoardColor          = UIColor.lightGrayColor()
+let BorderColor             = UIColor(red: 0, green: 174/255, blue: 187/255, alpha: 1)
 
 let SnakeBodyImage          = UIImage(named: "snake_body")
 let FoodImage               = UIImage(named: "food")

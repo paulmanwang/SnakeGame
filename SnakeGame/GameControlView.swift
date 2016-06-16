@@ -32,7 +32,14 @@ class GameControlView: UIView {
     var delegate: GameControlViewDelegate?
     
     override func awakeFromNib() {
+        // 设置阴影效果
+        self.layer.shadowColor = UIColor.blackColor().CGColor // 阴影颜色
+        self.layer.shadowOffset = CGSizeMake(0, 0); //阴影偏移
+        self.layer.shadowRadius = 8.0 // 阴影半径，默认为为3
+        self.layer.shadowOpacity = 1 // 阴影透明度，默认为0
+        
         containerView.layer.cornerRadius = 10
+        containerView.backgroundColor = UIColor(red: 0, green: 174/255, blue: 187/255, alpha: 1)
         startGameButton.layer.cornerRadius = 5
         leaderBoardButton.layer.cornerRadius = 5
         shareButton.layer.cornerRadius = 5
